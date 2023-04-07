@@ -65,3 +65,11 @@ class SinglyLinkedList:
             node.next = current.next
             current.next = node
             self.size += 1
+
+    def search(self, node: Node):
+        current = self.head
+        while current is not None:
+            if current.data == node.data:
+                return current
+            current = current.next
+        return None
