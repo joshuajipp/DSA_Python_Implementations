@@ -24,3 +24,18 @@ class SinglyLinkedList:
             self.tail.next = node
             self.tail = node
         self.size += 1
+
+    def insert(self, node, position):
+        if position < 0 or position > self.size:
+            raise IndexError('Position out of range')
+        if position == 0:
+            self.insert_head(node)
+        elif position == self.size:
+            self.insert_tail(node)
+        else:
+            current = self.head
+            for i in range(position-1):
+                current = current.next
+            node.next = current.next
+            current.next = node
+            self.size += 1
