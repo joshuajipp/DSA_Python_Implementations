@@ -39,3 +39,29 @@ class SinglyLinkedList:
             node.next = current.next
             current.next = node
             self.size += 1
+
+    def sort(self):
+        if self.size > 1:
+            current = self.head.next
+            while current is not None:
+                node_to_insert = current
+                current = current.next
+                self.sorted_insert(node_to_insert)
+
+    def sorted_insert(self, node: Node):
+        if self.head is None:
+            self.insert_head(node)
+            return
+        elif node.val < self.head.val:
+            self.insert_head(node)
+            return
+        elif node.val >= self.tail.val:
+            self.insert_tail(node)
+            return
+        else:
+            current = self.head
+            while current.next.val <= node.val:
+                current = current.next
+            node.next = current.next
+            current.next = node
+            self.size += 1
