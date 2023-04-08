@@ -74,6 +74,16 @@ class SinglyLinkedList:
             self.size += 1
 
     def sortedInsert(self, node: Node):
+        """
+        Inserts a node in the linked list in a sorted order.
+
+        Args:
+            node (Node): The node to be inserted in the linked list.
+
+        Returns:
+            None
+
+        """
         if not self.isSorted():
             self.sort()
         if self.head is None or node.val < self.head.val:
@@ -92,6 +102,16 @@ class SinglyLinkedList:
         self.size += 1
 
     def search(self, search_target: int):
+        """
+        Searches the linked list for a node with a specific value.
+
+        Args:
+            search_target (int): The value to be searched for in the linked list.
+
+        Returns:
+            Node: The node with the searched value or None if it is not found.
+
+        """
         current = self.head
         while current is not None:
             if current.val == search_target:
@@ -100,6 +120,13 @@ class SinglyLinkedList:
         return None
 
     def deleteHead(self):
+        """
+        Deletes the head node of the linked list.
+
+        Returns:
+            None
+
+        """
         if self.head is None:
             return
         if self.head == self.tail:
@@ -110,6 +137,13 @@ class SinglyLinkedList:
         self.size -= 1
 
     def deleteTail(self):
+        """
+        Deletes the tail node of the linked list.
+
+        Returns:
+            None
+
+        """
         if self.tail is None:
             return
         if self.head == self.tail:
@@ -124,6 +158,15 @@ class SinglyLinkedList:
         self.size -= 1
 
     def deleteNode(self, targetValue: int):
+        """
+        Deletes the node with the given target value from the linked list.
+
+        Args:
+            targetValue (int): The value of the node to be deleted.
+
+        Returns:
+            None: If the linked list is empty or the target node is not found.
+        """
         if self.head is None:
             return
         if self.head.val == targetValue:
@@ -141,6 +184,12 @@ class SinglyLinkedList:
             self.size -= 1
 
     def sort(self):
+        """
+        Sorts the linked list in ascending order using insertion sort algorithm.
+
+        Returns:
+            None: If the linked list is empty or contains only one node.
+        """
         if self.head is None:
             return
         if self.head == self.tail:
@@ -167,6 +216,12 @@ class SinglyLinkedList:
         self.tail = current
 
     def isSorted(self) -> bool:
+        """
+        Checks if the linked list is sorted in ascending order.
+
+        Returns:
+            bool: True if the linked list is sorted in ascending order, False otherwise.
+        """
         if self.head is None or self.head.next is None:
             # An empty or single-element list is always sorted
             return True
@@ -182,11 +237,18 @@ class SinglyLinkedList:
         return True
 
     def clear(self):
+        """
+        Clears the linked list by setting head, tail and size to None and 0, respectively.
+        """
         self.head = None
         self.tail = None
         self.size = 0
 
     def printList(self):
+        """
+        Prints the values of all nodes in the linked list, separated by '->'.
+        Also prints the length of the linked list and whether it is sorted or not.
+        """
         print(f"List length: {self.size}")
 
         if self.isSorted():
