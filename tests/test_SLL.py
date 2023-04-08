@@ -206,3 +206,58 @@ def test_delete_node():
     assert sll.head == None
     assert sll.tail == None
     assert sll.size == 0
+
+
+def test_sort():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    sll.sort()
+    assert sll.head.val == 1
+    assert sll.tail.val == 5
+    assert sll.size == 5
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(5))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(1))
+    sll.sort()
+    assert sll.head.val == 1
+    assert sll.tail.val == 5
+    assert sll.size == 5
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(5))
+    sll.insertTail(Node(4))
+    sll.sort()
+    assert sll.head.val == 1
+    assert sll.tail.val == 5
+    assert sll.size == 5
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(9))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(8))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(7))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(6))
+    sll.insertTail(Node(5))
+    sll.sort()
+
+    assert sll.head.val == 1
+    assert sll.head.next.val == 2
+    assert sll.head.next.next.val == 3
+    assert sll.head.next.next.next.val == 4
+    assert sll.head.next.next.next.next.val == 5
+    assert sll.tail.val == 9
+    assert sll.size == 9
