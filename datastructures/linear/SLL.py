@@ -16,7 +16,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert_tail(self, node: Node):
+    def insertTail(self, node: Node):
         if self.tail is None:
             self.head = node
             self.tail = node
@@ -29,9 +29,9 @@ class SinglyLinkedList:
         if position < 0 or position > self.size:
             raise IndexError('Position out of range')
         if position == 0:
-            self.insert_head(node)
+            self.insertHead(node)
         elif position == self.size:
-            self.insert_tail(node)
+            self.insertTail(node)
         else:
             current = self.head
             for i in range(position-1):
@@ -120,7 +120,7 @@ class SinglyLinkedList:
 
         current_node = self.head
         while current_node.next is not None:
-            if current_node.val <= current_node.next.val:
+            if current_node.val > current_node.next.val:
                 # If the current node's value is greater than the next node's value, the list is not sorted
                 return False
             current_node = current_node.next
@@ -139,7 +139,7 @@ class SinglyLinkedList:
         print(f"List length: {self.size}")
 
         # Check if the list is sorted
-        if self.is_sorted():
+        if self.isSorted():
             print("Sorted: Yes")
         else:
             print("Sorted: No")
