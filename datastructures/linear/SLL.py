@@ -2,7 +2,17 @@ from datastructures.nodes.SNode import Node
 
 
 class SinglyLinkedList:
+    """
+    A singly linked list implementation with methods to insert nodes at head, tail or a given position.
+    """
+
     def __init__(self, head: Node = None):
+        """
+        Initialize the linked list with a head node (optional). Set tail to head and size to 0 or 1.
+
+        Args:
+            head (Node, optional): Head node of the linked list. Defaults to None.
+        """
         self.head = head
         self.tail = head
         self.size = 0
@@ -10,6 +20,12 @@ class SinglyLinkedList:
             self.size = 1
 
     def insertHead(self, node: Node):
+        """
+        Insert a node at the head of the linked list.
+
+        Args:
+            node (Node): Node to be inserted at the head.
+        """
         node.next = self.head
         self.head = node
         if self.tail is None:
@@ -17,6 +33,12 @@ class SinglyLinkedList:
         self.size += 1
 
     def insertTail(self, node: Node):
+        """
+        Insert a node at the tail of the linked list.
+
+        Args:
+            node (Node): Node to be inserted at the tail.
+        """
         if self.tail is None:
             self.head = node
             self.tail = node
@@ -26,6 +48,17 @@ class SinglyLinkedList:
         self.size += 1
 
     def insert(self, node: Node, position):
+        """
+        Insert a node at a given position in the linked list.
+
+        Args:
+            node (Node): Node to be inserted.
+            position (int): Index position at which the node is to be inserted.
+
+        Raises:
+            IndexError: If the given position is out of range (less than 0 or greater than size).
+
+        """
         if position < 0 or position > self.size:
             raise IndexError('Position out of range')
         if position == 0:
@@ -153,18 +186,14 @@ class SinglyLinkedList:
         self.tail = None
         self.size = 0
 
-    def print_list(self):
-
-        # Print the list length
+    def printList(self):
         print(f"List length: {self.size}")
 
-        # Check if the list is sorted
         if self.isSorted():
             print("Sorted: Yes")
         else:
             print("Sorted: No")
 
-        # Print the list content
         current = self.head
 
         while current is not None:
