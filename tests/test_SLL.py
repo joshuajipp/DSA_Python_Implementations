@@ -95,7 +95,7 @@ def test_search():
     assert sll.search(6) == None
 
 
-def test_delete_head():
+def test_deleteHead():
     sll = SinglyLinkedList()
     sll.insertTail(Node(1))
     sll.insertTail(Node(2))
@@ -124,7 +124,7 @@ def test_delete_head():
     assert sll.size == 0
 
 
-def test_delete_tail():
+def test_deleteTail():
     sll = SinglyLinkedList()
     sll.insertTail(Node(1))
     sll.insertTail(Node(2))
@@ -153,7 +153,7 @@ def test_delete_tail():
     assert sll.size == 0
 
 
-def test_delete_node():
+def test_deleteNode():
     sll = SinglyLinkedList()
     sll.insertTail(Node(1))
     sll.insertTail(Node(2))
