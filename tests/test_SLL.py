@@ -281,3 +281,16 @@ def test_isSorted():
     sll.insertTail(Node(6))
     sll.insertTail(Node(5))
     assert sll.isSorted() == False
+
+
+def test_clear():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    sll.clear()
+    assert sll.head == None
+    assert sll.tail == None
+    assert sll.size == 0
