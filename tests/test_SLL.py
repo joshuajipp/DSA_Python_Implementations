@@ -98,3 +98,16 @@ def test_sorted_insert():
     assert not_sorted_sll.head.next.val == 2
     assert not_sorted_sll.head.next.next.val == 3
     assert not_sorted_sll.tail.val == 6
+
+
+def test_search():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    assert sll.search(1) == sll.head
+    assert sll.search(2) == sll.head.next
+    assert sll.search(5) == sll.tail
+    assert sll.search(6) == None
