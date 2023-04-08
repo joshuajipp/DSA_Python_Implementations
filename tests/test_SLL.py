@@ -82,3 +82,19 @@ def test_is_sorted():
     sorted_sll.insertTail(Node(9))
     assert sorted_sll.isSorted() == True
     sorted_sll.print_list()
+
+
+def test_sorted_insert():
+    not_sorted_sll = SinglyLinkedList()
+    not_sorted_sll.insertTail(Node(6))
+    not_sorted_sll.insertTail(Node(5))
+    not_sorted_sll.insertTail(Node(4))
+    not_sorted_sll.insertTail(Node(1))
+    not_sorted_sll.insertTail(Node(2))
+    not_sorted_sll.sortedInsert(Node(3))
+    assert not_sorted_sll.isSorted() == True
+    assert not_sorted_sll.size == 6
+    assert not_sorted_sll.head.val == 1
+    assert not_sorted_sll.head.next.val == 2
+    assert not_sorted_sll.head.next.next.val == 3
+    assert not_sorted_sll.tail.val == 6

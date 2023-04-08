@@ -46,12 +46,17 @@ class SinglyLinkedList:
         if self.head is None or node.val < self.head.val:
             node.next = self.head
             self.head = node
+            if node.next is None:
+                self.tail = node
         else:
             current_node = self.head
             while current_node.next is not None and current_node.next.val < node.val:
                 current_node = current_node.next
             node.next = current_node.next
             current_node.next = node
+            if node.next is None:
+                self.tail = node
+        self.size += 1
 
     def search(self, node: Node):
         current = self.head
