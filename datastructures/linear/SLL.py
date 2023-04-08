@@ -2,14 +2,14 @@ from datastructures.nodes.SNode import Node
 
 
 class SinglyLinkedList:
-    def __init__(self, head=None):
+    def __init__(self, head: Node = None):
         self.head = head
         self.tail = head
         self.size = 0
         if head is not None:
             self.size = 1
 
-    def insert_head(self, node: Node):
+    def insertHead(self, node: Node):
         node.next = self.head
         self.head = node
         if self.tail is None:
@@ -25,7 +25,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert(self, node, position):
+    def insert(self, node: Node, position):
         if position < 0 or position > self.size:
             raise IndexError('Position out of range')
         if position == 0:
@@ -72,7 +72,7 @@ class SinglyLinkedList:
             self.tail = current
         self.size -= 1
 
-    def delete_node(self, node):
+    def delete_node(self, node: Node):
         if self.head is None:
             return
         if self.head == node:
@@ -98,7 +98,7 @@ class SinglyLinkedList:
         while unsorted_head is not None:
             node = unsorted_head
             unsorted_head = unsorted_head.next
-            if node.val < sorted_head.data:
+            if node.val < sorted_head.val:
                 node.next = sorted_head
                 sorted_head = node
             else:
@@ -113,7 +113,43 @@ class SinglyLinkedList:
             current = current.next
         self.tail = current
 
+    def isSorted(self) -> bool:
+        if self.head is None or self.head.next is None:
+            # An empty or single-element list is always sorted
+            return True
+
+        current_node = self.head
+        while current_node.next is not None:
+            if current_node.val <= current_node.next.val:
+                # If the current node's value is greater than the next node's value, the list is not sorted
+                return False
+            current_node = current_node.next
+
+        # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
+        return True
+
     def clear(self):
         self.head = None
         self.tail = None
         self.size = 0
+
+    def print_list(self):
+
+        # Print the list length
+        print(f"List length: {self.size}")
+
+        # Check if the list is sorted
+        if self.is_sorted():
+            print("Sorted: Yes")
+        else:
+            print("Sorted: No")
+
+        # Print the list content
+        current = self.head
+
+        while current is not None:
+            if current.next is None:
+                print(current.val)
+            else:
+                print(current.val, end=" -> ")
+            current = current.next
