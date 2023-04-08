@@ -66,24 +66,6 @@ def test_insert():
     assert raisedException
 
 
-def test_is_sorted():
-    not_sorted_sll = SinglyLinkedList()
-    not_sorted_sll.insertTail(Node(2))
-    not_sorted_sll.insertTail(Node(4))
-    not_sorted_sll.insertTail(Node(6))
-    not_sorted_sll.insertTail(Node(8))
-    not_sorted_sll.insertTail(Node(7))
-    assert not_sorted_sll.isSorted() == False
-    sorted_sll = SinglyLinkedList()
-    sorted_sll.insertTail(Node(2))
-    sorted_sll.insertTail(Node(4))
-    sorted_sll.insertTail(Node(6))
-    sorted_sll.insertTail(Node(8))
-    sorted_sll.insertTail(Node(9))
-    assert sorted_sll.isSorted() == True
-    sorted_sll.print_list()
-
-
 def test_sorted_insert():
     not_sorted_sll = SinglyLinkedList()
     not_sorted_sll.insertTail(Node(6))
@@ -261,3 +243,41 @@ def test_sort():
     assert sll.head.next.next.next.next.val == 5
     assert sll.tail.val == 9
     assert sll.size == 9
+
+
+def test_isSorted():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    assert sll.isSorted() == True
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(5))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(1))
+    assert sll.isSorted() == False
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(5))
+    sll.insertTail(Node(4))
+    assert sll.isSorted() == False
+
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(9))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(8))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(7))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(6))
+    sll.insertTail(Node(5))
+    assert sll.isSorted() == False
