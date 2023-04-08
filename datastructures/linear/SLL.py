@@ -66,7 +66,7 @@ class SinglyLinkedList:
             current = current.next
         return None
 
-    def delete_head(self):
+    def deleteHead(self):
         if self.head is None:
             return
         if self.head == self.tail:
@@ -76,7 +76,7 @@ class SinglyLinkedList:
             self.head = self.head.next
         self.size -= 1
 
-    def delete_tail(self):
+    def deleteTail(self):
         if self.tail is None:
             return
         if self.head == self.tail:
@@ -90,19 +90,21 @@ class SinglyLinkedList:
             self.tail = current
         self.size -= 1
 
-    def delete_node(self, node: Node):
+    def deleteNode(self, targetValue: int):
         if self.head is None:
             return
-        if self.head == node:
-            self.delete_head()
+        if self.head.val == targetValue:
+            self.deleteHead()
             return
         current = self.head
-        while current.next is not None and current.next != node:
+        while current.next is not None and current.next.val != targetValue:
             current = current.next
-        if current.next == node:
-            current.next = node.next
-            if node == self.tail:
-                self.tail = current
+        if current.next is None:
+            return
+        if current.next == self.tail:
+            self.deleteTail()
+        else:
+            current.next = current.next.next
             self.size -= 1
 
     def sort(self):

@@ -111,3 +111,98 @@ def test_search():
     assert sll.search(2) == sll.head.next
     assert sll.search(5) == sll.tail
     assert sll.search(6) == None
+
+
+def test_delete_head():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    sll.deleteHead()
+    assert sll.head.val == 2
+    assert sll.tail.val == 5
+    assert sll.size == 4
+    sll.deleteHead()
+    assert sll.head.val == 3
+    assert sll.tail.val == 5
+    assert sll.size == 3
+    sll.deleteHead()
+    assert sll.head.val == 4
+    assert sll.tail.val == 5
+    assert sll.size == 2
+    sll.deleteHead()
+    assert sll.head.val == 5
+    assert sll.tail.val == 5
+    assert sll.size == 1
+    sll.deleteHead()
+    assert sll.head == None
+    assert sll.tail == None
+    assert sll.size == 0
+
+
+def test_delete_tail():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    sll.deleteTail()
+    assert sll.head.val == 1
+    assert sll.tail.val == 4
+    assert sll.size == 4
+    sll.deleteTail()
+    assert sll.head.val == 1
+    assert sll.tail.val == 3
+    assert sll.size == 3
+    sll.deleteTail()
+    assert sll.head.val == 1
+    assert sll.tail.val == 2
+    assert sll.size == 2
+    sll.deleteTail()
+    assert sll.head.val == 1
+    assert sll.tail.val == 1
+    assert sll.size == 1
+    sll.deleteTail()
+    assert sll.head == None
+    assert sll.tail == None
+    assert sll.size == 0
+
+
+def test_delete_node():
+    sll = SinglyLinkedList()
+    sll.insertTail(Node(1))
+    sll.insertTail(Node(2))
+    sll.insertTail(Node(3))
+    sll.insertTail(Node(4))
+    sll.insertTail(Node(5))
+    sll.deleteNode(1)
+    sll.deleteNode(5)
+    assert sll.head.val == 2
+    assert sll.tail.val == 4
+    assert sll.size == 3
+    sll.deleteNode(3)
+    assert sll.head.val == 2
+    assert sll.tail.val == 4
+    assert sll.size == 2
+
+    sll.insertHead(Node(1))
+    sll.insertTail(Node(5))
+    sll.deleteNode(sll.tail.val)
+    assert sll.head.val == 1
+    assert sll.tail.val == 4
+    assert sll.size == 3
+    sll.deleteNode(sll.head.val)
+    assert sll.head.val == 2
+    assert sll.tail.val == 4
+    assert sll.size == 2
+    sll.deleteNode(2)
+    assert sll.head.val == 4
+    assert sll.tail.val == 4
+    assert sll.size == 1
+    sll.deleteNode(sll.head.val)
+    assert sll.head == None
+    assert sll.tail == None
+    assert sll.size == 0
