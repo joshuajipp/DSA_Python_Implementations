@@ -209,3 +209,60 @@ def test_delete():
     assert sll.size == 0
     assert sll.head == None
     assert sll.tail == None
+
+
+def test_clear():
+    sll = DLL()
+    sll.insertTail(DNode(100))
+    sll.insertTail(DNode(101))
+    sll.insertTail(DNode(106))
+    sll.insertTail(DNode(102))
+    sll.insertTail(DNode(103))
+    sll.clear()
+    assert sll.size == 0
+    assert sll.head == None
+    assert sll.tail == None
+
+
+def test_deleteHead():
+    sll = DLL()
+    sll.insertTail(DNode(100))
+    sll.insertTail(DNode(101))
+    sll.insertTail(DNode(106))
+    sll.insertTail(DNode(102))
+    sll.insertTail(DNode(103))
+    sll.deleteHead()
+    assert sll.size == 4
+    assert sll.head.val == 101
+    assert sll.head.next.val == 106
+    assert sll.head.next.next.val == 102
+    assert sll.tail.val == 103
+    assert sll.tail.prev.val == 102
+    assert sll.tail.prev.prev.val == 106
+
+    sll.deleteHead()
+    assert sll.size == 3
+    assert sll.head.val == 106
+    assert sll.head.next.val == 102
+    assert sll.tail.val == 103
+    assert sll.tail.prev.val == 102
+    assert sll.tail.prev.prev.val == 106
+
+    sll.deleteHead()
+    assert sll.size == 2
+    assert sll.head.val == 102
+    assert sll.head.next.val == 103
+    assert sll.tail.val == 103
+    assert sll.tail.prev.val == 102
+
+    sll.deleteHead()
+    assert sll.size == 1
+    assert sll.head.val == 103
+    assert sll.tail.val == 103
+    assert sll.head.next == None
+    assert sll.tail.prev == None
+
+    sll.deleteHead()
+    assert sll.size == 0
+    assert sll.head == None
+    assert sll.tail == None
