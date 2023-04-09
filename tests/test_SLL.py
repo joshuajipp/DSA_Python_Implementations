@@ -2,7 +2,7 @@ from datastructures.nodes.SNode import Node
 from datastructures.linear.SLL import SinglyLinkedList
 
 
-def test_insert_head():
+def test_insertHead():
     sll = SinglyLinkedList()
     sll.insertHead(Node(1))
     assert sll.head.val == 1
@@ -14,7 +14,7 @@ def test_insert_head():
     assert sll.size == 2
 
 
-def test_insert_tail():
+def test_insertTail():
     sll = SinglyLinkedList()
     sll.insertTail(Node(1))
     assert sll.head.val == 1
@@ -66,7 +66,7 @@ def test_insert():
     assert raisedException
 
 
-def test_sorted_insert():
+def test_sortedInsert():
     not_sorted_sll = SinglyLinkedList()
     not_sorted_sll.insertTail(Node(6))
     not_sorted_sll.insertTail(Node(5))
