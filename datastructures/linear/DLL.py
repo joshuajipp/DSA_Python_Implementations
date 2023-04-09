@@ -1,16 +1,19 @@
-from datastructures.nodes.DNode import Node
+from datastructures.nodes.DNode import DNode
 
 
 class DoublyLinkedList:
-    def __init__(self):
+    def __init__(self, node: DNode = None):
         """
         Initializes an empty doubly linked list
         """
-        self.head = None
-        self.tail = None
-        self.size = 0
+        self.head = node
+        self.tail = node
+        self.size = 1 if node else 0
+        if node:
+            node.prev = None
+            node.next = None
 
-    def insertHead(self, node: Node):
+    def insertHead(self, node: DNode):
         """
         Inserts a node at the beginning of the doubly linked list
         """
@@ -23,7 +26,7 @@ class DoublyLinkedList:
             self.head = node
         self.size += 1
 
-    def insertTail(self, node: Node):
+    def insertTail(self, node: DNode):
         """
         Inserts a node at the end of the doubly linked list
         """
@@ -36,7 +39,7 @@ class DoublyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert(self, node: Node, index: int):
+    def insert(self, node: DNode, index: int):
         """
         Inserts a node at a specified index in the doubly linked list
         """
@@ -56,7 +59,7 @@ class DoublyLinkedList:
             curr.prev = node
             self.size += 1
 
-    def sortedInsert(self, node: Node):
+    def sortedInsert(self, node: DNode):
         """
         Inserts a node in sorted order in the doubly linked list
         """
@@ -77,7 +80,7 @@ class DoublyLinkedList:
             curr.next = node
             self.size += 1
 
-    def delete(self, target):
+    def delete(self, target: int):
         """Removes the first node containing the target value."""
         if self.head is None:
             return  # List is empty
@@ -120,13 +123,21 @@ class DoublyLinkedList:
 
     def printList(self):
         """
-        Prints the doubly linked list
+        Prints the values of all nodes in the linked list, separated by '->'.
+        Also prints the length of the linked list and whether it is sorted or not.
         """
-        if not self.head:
-            print("Empty list")
+        print(f"List length: {self.size}")
+
+        if self.isSorted():
+            print("Sorted: Yes")
         else:
-            curr = self.head
-            while curr:
-                print(curr.val, end=" ")
-                curr = curr.next
-            print()
+            print("Sorted: No")
+
+        current = self.head
+
+        while current is not None:
+            if current.next is None:
+                print(current.val)
+            else:
+                print(current.val, end=" <-> ")
+            current = current.next
