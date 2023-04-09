@@ -8,39 +8,39 @@ class TNode:
         self.balance = balance
     
     # Getters
-    def get_data(self):
+    def getData(self):
         return self.data
     
-    def get_left(self):
+    def getLeft(self):
         return self.left
     
-    def get_right(self):
+    def getRight(self):
         return self.right
     
-    def get_parent(self):
+    def getParent(self):
         return self.parent
     
-    def get_balance(self):
+    def getBalance(self):
         return self.balance
     
     # Setters
-    def set_data(self, data):
+    def setData(self, data):
         self.data = data
         
-    def set_left(self, node):
+    def setLeft(self, node):
         self.left = node
         
-    def set_right(self, node):
+    def setRight(self, node):
         self.right = node
         
-    def set_parent(self, node):
+    def setParent(self, node):
         self.parent = node
         
-    def set_balance(self, balance):
+    def setBalance(self, balance):
         self.balance = balance
     
     # Print
-    def print_node(self):
+    def printNode(self):
         print(f"Data: {self.data}, Balance: {self.balance}")
     
     # toString
