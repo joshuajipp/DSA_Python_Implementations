@@ -54,3 +54,46 @@ def test_insertTail():
     assert dll.head.next.next.next.val == 0
     assert dll.tail.prev.val == 2
     assert dll.tail.prev.prev.val == 1
+
+
+def test_insert():
+    dll = DLL()
+    node = DNode(1)
+    dll.insert(node, 0)
+    assert dll.head == node
+    assert dll.tail == node
+    assert dll.size == 1
+    assert node.prev == None
+    assert node.next == None
+
+    dll.insert(DNode(2), 0)
+    assert dll.head.val == 2
+    assert dll.head.next == node
+    assert dll.tail == node
+    assert dll.size == 2
+    assert node.prev == dll.head
+    assert node.next == None
+
+    dll.insert(DNode(3), 1)
+    assert dll.head.val == 2
+    assert dll.tail.val == 1
+    assert dll.size == 3
+    assert dll.head.next.val == 3
+    assert dll.head.next.next.val == 1
+    assert dll.head.next.next.prev.val == 3
+    assert dll.head.next.next.prev.prev.val == 2
+    assert dll.head.next.next.prev.prev.next.val == 3
+
+    exception_raised = False
+    try:
+        dll.insert(DNode(4), 4)
+    except IndexError:
+        exception_raised = True
+    assert exception_raised
+
+    exception_raised = False
+    try:
+        dll.insert(DNode(4), -1)
+    except IndexError:
+        exception_raised = True
+    assert exception_raised
