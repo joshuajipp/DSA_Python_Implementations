@@ -152,3 +152,22 @@ def test_sort():
     assert not_sorted_dll.head.next.next.val == 3
     assert not_sorted_dll.tail.val == 7
     assert not_sorted_dll.tail.prev.val == 6
+
+
+def test_isSorted():
+    sorted_dll = DLL()
+    sorted_dll.insertTail(DNode(1))
+    sorted_dll.insertTail(DNode(2))
+    sorted_dll.insertTail(DNode(3))
+    sorted_dll.insertTail(DNode(4))
+    sorted_dll.insertTail(DNode(5))
+    sorted_dll.insertTail(DNode(6))
+    assert sorted_dll.isSorted() == True
+
+    not_sorted_dll = DLL()
+    not_sorted_dll.insertTail(DNode(6))
+    not_sorted_dll.insertTail(DNode(5))
+    not_sorted_dll.insertTail(DNode(4))
+    not_sorted_dll.insertTail(DNode(1))
+    not_sorted_dll.insertTail(DNode(2))
+    assert not_sorted_dll.isSorted() == False
