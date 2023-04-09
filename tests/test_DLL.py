@@ -174,95 +174,154 @@ def test_isSorted():
 
 
 def test_delete():
-    sll = DLL()
-    sll.insertTail(DNode(100))
-    sll.insertTail(DNode(101))
-    sll.insertTail(DNode(106))
-    sll.insertTail(DNode(102))
-    sll.insertTail(DNode(103))
-    sll.deleteNode(101)
-    sll.deleteNode(103)
+    dll = DLL()
+    dll.insertTail(DNode(100))
+    dll.insertTail(DNode(101))
+    dll.insertTail(DNode(106))
+    dll.insertTail(DNode(102))
+    dll.insertTail(DNode(103))
+    dll.deleteNode(101)
+    dll.deleteNode(103)
 
-    assert sll.size == 3
-    assert sll.head.val == 100
-    assert sll.head.next.val == 106
-    assert sll.head.next.next.val == 102
-    assert sll.tail.val == 102
-    assert sll.tail.prev.val == 106
-    assert sll.tail.prev.prev.val == 100
+    assert dll.size == 3
+    assert dll.head.val == 100
+    assert dll.head.next.val == 106
+    assert dll.head.next.next.val == 102
+    assert dll.tail.val == 102
+    assert dll.tail.prev.val == 106
+    assert dll.tail.prev.prev.val == 100
 
-    sll.deleteNode(100)
-    assert sll.size == 2
-    assert sll.head.val == 106
-    assert sll.head.next.val == 102
-    assert sll.tail.val == 102
-    assert sll.tail.prev.val == 106
+    dll.deleteNode(100)
+    assert dll.size == 2
+    assert dll.head.val == 106
+    assert dll.head.next.val == 102
+    assert dll.tail.val == 102
+    assert dll.tail.prev.val == 106
 
-    sll.deleteNode(102)
-    assert sll.size == 1
-    assert sll.head.val == 106
-    assert sll.tail.val == 106
-    assert sll.head.next == None
-    assert sll.tail.prev == None
+    dll.deleteNode(102)
+    assert dll.size == 1
+    assert dll.head.val == 106
+    assert dll.tail.val == 106
+    assert dll.head.next == None
+    assert dll.tail.prev == None
 
-    sll.deleteNode(106)
-    assert sll.size == 0
-    assert sll.head == None
-    assert sll.tail == None
+    dll.deleteNode(106)
+    assert dll.size == 0
+    assert dll.head == None
+    assert dll.tail == None
 
 
 def test_clear():
-    sll = DLL()
-    sll.insertTail(DNode(100))
-    sll.insertTail(DNode(101))
-    sll.insertTail(DNode(106))
-    sll.insertTail(DNode(102))
-    sll.insertTail(DNode(103))
-    sll.clear()
-    assert sll.size == 0
-    assert sll.head == None
-    assert sll.tail == None
+    dll = DLL()
+    dll.insertTail(DNode(100))
+    dll.insertTail(DNode(101))
+    dll.insertTail(DNode(106))
+    dll.insertTail(DNode(102))
+    dll.insertTail(DNode(103))
+    dll.clear()
+    assert dll.size == 0
+    assert dll.head == None
+    assert dll.tail == None
 
 
 def test_deleteHead():
-    sll = DLL()
-    sll.insertTail(DNode(100))
-    sll.insertTail(DNode(101))
-    sll.insertTail(DNode(106))
-    sll.insertTail(DNode(102))
-    sll.insertTail(DNode(103))
-    sll.deleteHead()
-    assert sll.size == 4
-    assert sll.head.val == 101
-    assert sll.head.next.val == 106
-    assert sll.head.next.next.val == 102
-    assert sll.tail.val == 103
-    assert sll.tail.prev.val == 102
-    assert sll.tail.prev.prev.val == 106
+    dll = DLL()
+    dll.insertTail(DNode(100))
+    dll.insertTail(DNode(101))
+    dll.insertTail(DNode(106))
+    dll.insertTail(DNode(102))
+    dll.insertTail(DNode(103))
+    dll.deleteHead()
+    assert dll.size == 4
+    assert dll.head.val == 101
+    assert dll.head.next.val == 106
+    assert dll.head.next.next.val == 102
+    assert dll.tail.val == 103
+    assert dll.tail.prev.val == 102
+    assert dll.tail.prev.prev.val == 106
 
-    sll.deleteHead()
-    assert sll.size == 3
-    assert sll.head.val == 106
-    assert sll.head.next.val == 102
-    assert sll.tail.val == 103
-    assert sll.tail.prev.val == 102
-    assert sll.tail.prev.prev.val == 106
+    dll.deleteHead()
+    assert dll.size == 3
+    assert dll.head.val == 106
+    assert dll.head.next.val == 102
+    assert dll.tail.val == 103
+    assert dll.tail.prev.val == 102
+    assert dll.tail.prev.prev.val == 106
 
-    sll.deleteHead()
-    assert sll.size == 2
-    assert sll.head.val == 102
-    assert sll.head.next.val == 103
-    assert sll.tail.val == 103
-    assert sll.tail.prev.val == 102
+    dll.deleteHead()
+    assert dll.size == 2
+    assert dll.head.val == 102
+    assert dll.head.next.val == 103
+    assert dll.tail.val == 103
+    assert dll.tail.prev.val == 102
 
-    sll.deleteHead()
-    assert sll.size == 1
-    assert sll.head.val == 103
-    assert sll.tail.val == 103
-    assert sll.head.next == None
-    assert sll.tail.prev == None
+    dll.deleteHead()
+    assert dll.size == 1
+    assert dll.head.val == 103
+    assert dll.tail.val == 103
+    assert dll.head.next == None
+    assert dll.tail.prev == None
 
-    sll.deleteHead()
-    assert sll.size == 0
-    assert sll.head == None
-    assert sll.tail == None
+    dll.deleteHead()
+    assert dll.size == 0
+    assert dll.head == None
+    assert dll.tail == None
+
+
+def test_deleteTail():
+    dll = DLL()
+    dll.insertTail(DNode(75))
+    dll.insertTail(DNode(69))
+    dll.insertTail(DNode(150))
+    dll.insertTail(DNode(111))
+    dll.insertTail(DNode(103))
+    dll.deleteTail()
+    assert dll.size == 4
+    assert dll.head.val == 75
+    assert dll.head.next.val == 69
+    assert dll.head.next.next.val == 150
+    assert dll.tail.val == 111
+    assert dll.tail.prev.val == 150
+    assert dll.tail.prev.prev.val == 69
+
+    dll.deleteTail()
+    assert dll.size == 3
+    assert dll.head.val == 75
+    assert dll.head.next.val == 69
+    assert dll.tail.val == 150
+    assert dll.tail.prev.val == 69
+    assert dll.tail.prev.prev.val == 75
+
+    dll.deleteTail()
+    assert dll.size == 2
+    assert dll.head.val == 75
+    assert dll.head.next.val == 69
+    assert dll.tail.val == 69
+    assert dll.tail.prev.val == 75
+
+    dll.deleteTail()
+    assert dll.size == 1
+    assert dll.head.val == 75
+    assert dll.tail.val == 75
+    assert dll.head.next == None
+    assert dll.tail.prev == None
+
+    dll.deleteTail()
+    assert dll.size == 0
+    assert dll.head == None
+    assert dll.tail == None
+
+
+def test_search():
+    dll = DLL()
+    dll.insertTail(DNode(75))
+    dll.insertTail(DNode(69))
+    dll.insertTail(DNode(150))
+    dll.insertTail(DNode(111))
+    dll.insertTail(DNode(103))
+    assert dll.search(69) == dll.head.next
+    assert dll.search(150) == dll.head.next.next
+    assert dll.search(111) == dll.tail.prev
+    assert dll.search(103) == dll.tail
+    assert dll.search(75) == dll.head
+    assert dll.search(100) == None
