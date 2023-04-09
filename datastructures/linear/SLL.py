@@ -1,4 +1,4 @@
-from datastructures.nodes.SNode import Node
+from datastructures.nodes.SNode import SNode
 
 
 class SinglyLinkedList:
@@ -6,7 +6,7 @@ class SinglyLinkedList:
     A singly linked list implementation with methods to insert nodes at head, tail or a given position.
     """
 
-    def __init__(self, head: Node = None):
+    def __init__(self, head: SNode = None):
         """
         Initialize the linked list with a head node (optional). Set tail to head and size to 0 or 1.
 
@@ -19,7 +19,7 @@ class SinglyLinkedList:
         if head is not None:
             self.size = 1
 
-    def insertHead(self, node: Node):
+    def insertHead(self, node: SNode):
         """
         Insert a node at the head of the linked list.
 
@@ -32,7 +32,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insertTail(self, node: Node):
+    def insertTail(self, node: SNode):
         """
         Insert a node at the tail of the linked list.
 
@@ -47,7 +47,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert(self, node: Node, position):
+    def insert(self, node: SNode, position):
         """
         Insert a node at a given position in the linked list.
 
@@ -73,7 +73,7 @@ class SinglyLinkedList:
             current.next = node
             self.size += 1
 
-    def sortedInsert(self, node: Node):
+    def sortedInsert(self, node: SNode):
         """
         Inserts a node in the linked list in a sorted order.
 
