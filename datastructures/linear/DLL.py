@@ -182,6 +182,61 @@ class DoublyLinkedList:
                 return
             current_node = current_node.next
 
+    def search(self, val):
+        """
+        Searches for a node with the given value in the linked list.
+
+        Args:
+            val: The value to search for.
+
+        Returns:
+            The node with the given value if found, None otherwise.
+        """
+        current_node = self.head
+        while current_node is not None:
+            if current_node.val == val:
+                return current_node
+            current_node = current_node.next
+        return None
+
+    def deleteHead(self):
+        """
+        Deletes the head node of the linked list.
+
+        Returns:
+            None
+        """
+        if self.head is None:
+            return
+        if self.head.next is None:
+            self.head = None
+            self.tail = None
+            self.size = 0
+            return
+        self.head = self.head.next
+        self.head.prev = None
+        self.size -= 1
+
+    def deleteTail(self):
+        """
+        Removes the tail node from the linked list.
+
+        Returns:
+            The value of the tail node that was removed.
+        """
+        if self.size == 0:
+            raise Exception("Cannot delete from empty list.")
+        elif self.size == 1:
+            val = self.head.val
+            self.head = None
+            self.tail = None
+        else:
+            val = self.tail.val
+            self.tail = self.tail.prev
+            self.tail.next = None
+        self.size -= 1
+        return val
+
     def clear(self):
         """
         Removes all nodes from the linked list.
