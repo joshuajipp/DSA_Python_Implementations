@@ -171,3 +171,41 @@ def test_isSorted():
     not_sorted_dll.insertTail(DNode(1))
     not_sorted_dll.insertTail(DNode(2))
     assert not_sorted_dll.isSorted() == False
+
+
+def test_delete():
+    sll = DLL()
+    sll.insertTail(DNode(100))
+    sll.insertTail(DNode(101))
+    sll.insertTail(DNode(106))
+    sll.insertTail(DNode(102))
+    sll.insertTail(DNode(103))
+    sll.deleteNode(101)
+    sll.deleteNode(103)
+
+    assert sll.size == 3
+    assert sll.head.val == 100
+    assert sll.head.next.val == 106
+    assert sll.head.next.next.val == 102
+    assert sll.tail.val == 102
+    assert sll.tail.prev.val == 106
+    assert sll.tail.prev.prev.val == 100
+
+    sll.deleteNode(100)
+    assert sll.size == 2
+    assert sll.head.val == 106
+    assert sll.head.next.val == 102
+    assert sll.tail.val == 102
+    assert sll.tail.prev.val == 106
+
+    sll.deleteNode(102)
+    assert sll.size == 1
+    assert sll.head.val == 106
+    assert sll.tail.val == 106
+    assert sll.head.next == None
+    assert sll.tail.prev == None
+
+    sll.deleteNode(106)
+    assert sll.size == 0
+    assert sll.head == None
+    assert sll.tail == None
