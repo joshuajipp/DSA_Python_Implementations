@@ -61,24 +61,98 @@ class DoublyLinkedList:
 
     def sortedInsert(self, node: DNode):
         """
-        Inserts a node in sorted order in the doubly linked list
+        Inserts a node in the linked list in a sorted order.
+
+        Args:
+            node (DNode): The node to be inserted in the linked list.
+
+        Returns:
+            None
+
         """
-        if not self.head:
+        if not self.isSorted():
+            self.sort()
+        if self.head is None or node.val < self.head.val:
+            node.next = self.head
+            self.head.prev = node
             self.head = node
-            self.tail = node
-        elif node.val <= self.head.val:
-            self.insertHead(node)
-        elif node.val >= self.tail.val:
-            self.insertTail(node)
         else:
-            curr = self.head
-            while curr.next and curr.next.val < node.val:
-                curr = curr.next
-            node.next = curr.next
-            node.prev = curr
-            curr.next.prev = node
-            curr.next = node
-            self.size += 1
+            current_node = self.head
+            while current_node.next is not None and current_node.next.val < node.val:
+                current_node = current_node.next
+            node.next = current_node.next
+            node.prev = current_node
+            current_node.next = node
+            if node.next is not None:
+                node.next.prev = node
+            else:
+                self.tail = node
+        self.size += 1
+
+    def sort(self):
+        """
+        Sorts the linked list in ascending order using insertion sort algorithm.
+
+        Returns:
+            None: If the linked list is empty or contains only one node.
+        """
+        if self.head is None or self.head.next is None:
+            # An empty or single-element list is already sorted
+            return
+
+        sorted_head = self.head
+        unsorted_head = self.head.next
+        sorted_head.prev = None
+        sorted_head.next = None
+
+        while unsorted_head is not None:
+            node = unsorted_head
+            unsorted_head = unsorted_head.next
+            node.prev = None
+            node.next = None
+
+            if node.val < sorted_head.val:
+                node.next = sorted_head
+                sorted_head.prev = node
+                sorted_head = node
+            else:
+                current = sorted_head
+                while current.next is not None and current.next.val < node.val:
+                    current = current.next
+                node.next = current.next
+                node.prev = current
+                current.next = node
+                if node.next is not None:
+                    node.next.prev = node
+                else:
+                    self.tail = node
+
+        self.head = sorted_head
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        self.tail = current
+
+    def isSorted(self) -> bool:
+        """
+        Checks if the linked list is sorted in ascending order.
+
+        Returns:
+            bool: True if the linked list is sorted in ascending order, False otherwise.
+        """
+        if self.head is None or self.head.next is None:
+            # An empty or single-element list is always sorted
+            return True
+
+        current_node = self.head
+        while current_node.next is not None:
+            if current_node.val > current_node.next.val:
+                # If the current node's value is greater than the next node's value, the list is not sorted
+                return False
+            current_node = current_node.next
+
+        # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
+        return True
 
     def delete(self, target: int):
         """Removes the first node containing the target value."""
@@ -107,19 +181,6 @@ class DoublyLinkedList:
                 self.size -= 1
                 return
             current_node = current_node.next
-
-    def isSorted(self):
-        """
-        Checks if the doubly linked list is sorted in non-descending order
-        """
-        if not self.head:
-            return True
-        curr = self.head
-        while curr.next:
-            if curr.val > curr.next.val:
-                return False
-            curr = curr.next
-        return True
 
     def printList(self):
         """

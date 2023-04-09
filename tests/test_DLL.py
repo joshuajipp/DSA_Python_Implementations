@@ -83,6 +83,9 @@ def test_insert():
     assert dll.head.next.next.prev.val == 3
     assert dll.head.next.next.prev.prev.val == 2
     assert dll.head.next.next.prev.prev.next.val == 3
+    assert dll.tail.val == 1
+    assert dll.tail.prev.val == 3
+    assert dll.tail.prev.prev.val == 2
 
     exception_raised = False
     try:
@@ -97,3 +100,55 @@ def test_insert():
     except IndexError:
         exception_raised = True
     assert exception_raised
+
+
+def test_sortedInsert():
+    not_sorted_dll = DLL()
+    not_sorted_dll.insertTail(DNode(6))
+    not_sorted_dll.insertTail(DNode(5))
+    not_sorted_dll.insertTail(DNode(4))
+    not_sorted_dll.insertTail(DNode(1))
+    not_sorted_dll.insertTail(DNode(2))
+    not_sorted_dll.sortedInsert(DNode(3))
+    not_sorted_dll.printList()
+    assert not_sorted_dll.isSorted() == True
+    assert not_sorted_dll.size == 6
+    assert not_sorted_dll.head.val == 1
+    assert not_sorted_dll.head.next.val == 2
+    assert not_sorted_dll.head.next.next.val == 3
+    assert not_sorted_dll.tail.val == 6
+    assert not_sorted_dll.tail.prev.val == 5
+
+
+def test_sort():
+    not_sorted_dll = DLL()
+    not_sorted_dll.insertTail(DNode(6))
+    not_sorted_dll.insertTail(DNode(5))
+    not_sorted_dll.insertTail(DNode(4))
+    not_sorted_dll.insertTail(DNode(1))
+    not_sorted_dll.insertTail(DNode(2))
+    not_sorted_dll.sort()
+    assert not_sorted_dll.isSorted() == True
+    assert not_sorted_dll.size == 5
+    assert not_sorted_dll.head.val == 1
+    assert not_sorted_dll.head.next.val == 2
+    assert not_sorted_dll.head.next.next.val == 4
+    assert not_sorted_dll.tail.val == 6
+    assert not_sorted_dll.tail.prev.val == 5
+
+    not_sorted_dll = DLL()
+    not_sorted_dll.insertTail(DNode(1))
+    not_sorted_dll.insertTail(DNode(7))
+    not_sorted_dll.insertTail(DNode(3))
+    not_sorted_dll.insertTail(DNode(4))
+    not_sorted_dll.insertTail(DNode(2))
+    not_sorted_dll.insertTail(DNode(5))
+    not_sorted_dll.insertTail(DNode(6))
+    not_sorted_dll.sort()
+    assert not_sorted_dll.isSorted() == True
+    assert not_sorted_dll.size == 7
+    assert not_sorted_dll.head.val == 1
+    assert not_sorted_dll.head.next.val == 2
+    assert not_sorted_dll.head.next.next.val == 3
+    assert not_sorted_dll.tail.val == 7
+    assert not_sorted_dll.tail.prev.val == 6
