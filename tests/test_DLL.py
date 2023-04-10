@@ -179,8 +179,8 @@ def test_delete():
     dll.insertTail(DNode(106))
     dll.insertTail(DNode(102))
     dll.insertTail(DNode(103))
-    dll.deleteNode(101)
-    dll.deleteNode(103)
+    dll.delete(101)
+    dll.delete(103)
 
     assert dll.size == 3
     assert dll.head.val == 100
@@ -190,21 +190,21 @@ def test_delete():
     assert dll.tail.prev.val == 106
     assert dll.tail.prev.prev.val == 100
 
-    dll.deleteNode(100)
+    dll.delete(100)
     assert dll.size == 2
     assert dll.head.val == 106
     assert dll.head.next.val == 102
     assert dll.tail.val == 102
     assert dll.tail.prev.val == 106
 
-    dll.deleteNode(102)
+    dll.delete(102)
     assert dll.size == 1
     assert dll.head.val == 106
     assert dll.tail.val == 106
     assert dll.head.next == None
     assert dll.tail.prev == None
 
-    dll.deleteNode(106)
+    dll.delete(106)
     assert dll.size == 0
     assert dll.head == None
     assert dll.tail == None

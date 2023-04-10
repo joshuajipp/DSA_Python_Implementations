@@ -112,11 +112,13 @@ class SinglyLinkedList:
             Node: The node with the searched value or None if it is not found.
 
         """
+        i = 0
         current = self.head
-        while current is not None:
+        while current is not None and i < self.size:
             if current.val == search_target:
                 return current
             current = current.next
+            i += 1
         return None
 
     def deleteHead(self):
@@ -157,7 +159,7 @@ class SinglyLinkedList:
             self.tail = current
         self.size -= 1
 
-    def deleteNode(self, targetValue: int):
+    def delete(self, targetValue: int):
         """
         Deletes the node with the given target value from the linked list.
 
