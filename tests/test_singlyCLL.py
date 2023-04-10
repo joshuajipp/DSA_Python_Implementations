@@ -74,3 +74,20 @@ def test_insert():
     except IndexError:
         exception_raised = True
     assert exception_raised
+
+
+def test_deleteHead():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(1))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(3))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(5))
+
+    singlyCLL.deleteHead()
+    assert singlyCLL.head.val == 2
+    assert singlyCLL.tail.val == 5
+    assert singlyCLL.tail.next.val == 2
+    assert singlyCLL.size == 4
+    assert singlyCLL.tail.next.next.val == 3
+    assert singlyCLL.tail.next.next.next.next.val == 5

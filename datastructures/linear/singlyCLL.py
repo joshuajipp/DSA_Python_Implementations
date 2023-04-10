@@ -51,3 +51,10 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         """
         super().insert(node, position)
         self.tail.next = self.head
+
+    def deleteHead(self):
+        """
+        Delete the head node of the linked list.
+        """
+        super().deleteHead()
+        self.tail.next = self.head
