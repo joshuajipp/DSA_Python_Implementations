@@ -37,7 +37,8 @@ class LinkedListQueue(SinglyLinkedList):
 
     def isEmpty(self):
         """
-        Checks if the queue is empty.
+
+                    Checks if the queue is empty.
 
         Returns:
             bool: True if the queue is empty, False otherwise.
@@ -45,8 +46,15 @@ class LinkedListQueue(SinglyLinkedList):
         return self.head is None
 
     def peek(self):
+        """
+        Returns the first node in the queue without removing it.
+
+        Returns:
+            Node: The first node in the queue.
+        """
         if self.head is not None:
             return self.head.val
+
         return None
 
     def clear(self):
