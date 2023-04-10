@@ -47,7 +47,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert(self, node: SNode, position):
+    def insert(self, node: SNode, position: int):
         """
         Insert a node at a given position in the linked list.
 

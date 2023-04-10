@@ -37,3 +37,17 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         """
         super().insertTail(node)
         self.tail.next = self.head
+
+    def insert(self, node: SNode, position: int):
+        """
+        Insert a node at a given position in the linked list.
+
+        Args:
+            node (Node): Node to be inserted.
+            position (int): Index position at which the node is to be inserted.
+
+        Raises:
+            IndexError: If the given position is out of range (less than 0 or greater than size).
+        """
+        super().insert(node, position)
+        self.tail.next = self.head
