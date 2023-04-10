@@ -64,8 +64,61 @@ class BST:
                     else:
                         current = current.getRight()
 
+    def delete(self, val: int):
+        node = self.search(val)
+        if node is None:
+            print("Value not found in the tree")
+        elif node.getLeft() is None and node.getRight() is None:
+            # case 1: the node to be deleted has no children
+            parent = node.getParent()
+            if parent is None:
+                # the node to be deleted is the root of the tree
+                self.root = None
+            elif parent.getLeft() == node:
+                parent.setLeft(None)
+            else:
+                parent.setRight(None)
+        elif node.getLeft() is None:
+            # case 2: the node to be deleted has only a right child
+            parent = node.getParent()
+            rightChild = node.getRight()
+            if parent is None:
+                # the node to be deleted is the root of the tree
+                self.root = rightChild
+                rightChild.setParent(None)
+            elif parent.getLeft() == node:
+                parent.setLeft(rightChild)
+                rightChild.setParent(parent)
+            else:
+                parent.setRight(rightChild)
+                rightChild.setParent(parent)
+        elif node.getRight() is None:
+            # case 2: the node to be deleted has only a left child
+            parent = node.getParent()
+            leftChild = node.getLeft()
+            if parent is None:
+                # the node to be deleted is the root of the tree
+                self.root = leftChild
+                leftChild.setParent(None)
+            elif parent.getLeft() == node:
+                parent.setLeft(leftChild)
+                leftChild.setParent(parent)
+            else:
+                parent.setRight(leftChild)
+                leftChild.setParent(parent)
+        else:
+            # case 3: the node to be deleted has two children
+            successor = node.getRight()
+            while successor.getLeft() is not None:
+                successor = successor.getLeft()
+            node.setData(successor.getData())
+            if successor.getRight() is not None:
+                successor.getRight().setParent(successor.getParent())
+            if successor.getParent().getLeft() == successor:
+                successor.getParent().setLeft(successor.getRight())
+            else:
+                successor.getParent().setRight(successor.getRight())
    
-
     # Search for the node with data val in the tree
     def search(self, val: int) -> Optional[TNode]:
         current = self.root
