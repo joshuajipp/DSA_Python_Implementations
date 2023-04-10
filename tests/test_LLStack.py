@@ -1,66 +1,76 @@
-from datastructures.nodes.SNode import SNode
 from datastructures.linear.SLL import SinglyLinkedList
+from datastructures.linear.LLStack import LinkedListStack
+from datastructures.nodes.SNode import SNode
 
 
-def test_push():
-    sll = SinglyLinkedList()
-    sll.push(SNode(1))
-    assert sll.head.val == 1
-    assert sll.tail.val == 1
-    assert sll.size == 1
-    sll.push(SNode(2))
-    assert sll.head.val == 2
-    assert sll.tail.val == 1
-    assert sll.size == 2
-    sll.push(SNode(3))
-    assert sll.head.val == 3
-    assert sll.tail.val == 1
-    assert sll.size == 3
-    sll.push(SNode(4))
-    assert sll.head.val == 4
-    assert sll.tail.val == 1
-    assert sll.size == 4
-    sll.push(SNode(5))
-    assert sll.head.val == 5
-    assert sll.tail.val == 1
-    assert sll.size == 5
+def test_integration():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.push(SNode(4))
+    stack.push(SNode(5))
+    stack.printList()
+
+    assert stack.isEmpty() == False
+    assert stack.size == 5
+    assert stack.peek() == 5
+    assert stack.pop() == 5
+    assert stack.peek() == 4
+    assert stack.size == 4
+    assert stack.pop() == 4
+    assert stack.peek() == 3
+    assert stack.size == 3
+    assert stack.pop() == 3
+    assert stack.peek() == 2
+    assert stack.size == 2
+    assert stack.pop() == 2
+    assert stack.peek() == 1
+    assert stack.size == 1
+    assert stack.pop() == 1
+    assert stack.size == 0
+    assert stack.isEmpty() == True
 
 
 def test_peek():
-    sll = SinglyLinkedList()
-    sll.push(SNode(1))
-    sll.push(SNode(2))
-    sll.push(SNode(3))
-    sll.push(SNode(4))
-    sll.push(SNode(5))
-    assert sll.peek().val == 5
-    assert sll.size == 5
+
+    stack = LinkedListStack()
+    assert stack.peek() == None
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.push(SNode(4))
+    stack.push(SNode(5))
+    assert stack.peek() == 5
+    assert stack.size == 5
 
 
 def test_pop():
-    sll = SinglyLinkedList()
-    sll.push(SNode(7))
-    sll.push(SNode(5))
-    sll.push(SNode(3))
-    sll.push(SNode(1))
-    sll.push(SNode(-1))
-    assert sll.pop().val == -1
-    assert sll.size == 4
-    assert sll.head.val == 1
-    assert sll.tail.val == 7
-    assert sll.pop().val == 1
-    assert sll.size == 3
-    assert sll.head.val == 3
-    assert sll.tail.val == 7
-    assert sll.pop().val == 3
-    assert sll.size == 2
-    assert sll.head.val == 5
-    assert sll.tail.val == 7
-    assert sll.pop().val == 5
-    assert sll.size == 1
-    assert sll.head.val == 7
-    assert sll.tail.val == 7
-    assert sll.pop().val == 7
-    assert sll.size == 0
-    assert sll.head == None
-    assert sll.tail == None
+    stack = LinkedListStack()
+    stack.push(SNode(7))
+    stack.push(SNode(5))
+    stack.push(SNode(3))
+    stack.push(SNode(1))
+    stack.push(SNode(-1))
+    assert stack.pop() == -1
+    assert stack.size == 4
+    assert stack.pop() == 1
+    assert stack.size == 3
+    assert stack.pop() == 3
+    assert stack.size == 2
+    assert stack.pop() == 5
+    assert stack.size == 1
+    assert stack.pop() == 7
+    assert stack.size == 0
+
+
+def test_push():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    assert stack.size == 1
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    assert stack.size == 3
+    stack.push(SNode(4))
+    stack.push(SNode(5))
+    assert stack.size == 5
