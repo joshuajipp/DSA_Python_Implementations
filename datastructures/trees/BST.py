@@ -12,14 +12,14 @@ class BST:
         else:
             self.root = None
 
-    # Setter and getter for root
+  
     def setRoot(self, node: TNode):
         self.root = node
 
     def getRoot(self) -> Optional[TNode]:
         return self.root
     
-    # Insert a new node with data val into the tree
+
     def insert(self, val: int):
         newNode = TNode(val)
         if self.root is None:
@@ -42,7 +42,6 @@ class BST:
                     else:
                         current = current.getRight()
 
-    # Insert the node passed as argument into the tree
     def insertNode(self, node: TNode):
         if self.root is None:
             self.root = node
@@ -69,21 +68,21 @@ class BST:
         if node is None:
             print("Value not found in the tree")
         elif node.getLeft() is None and node.getRight() is None:
-            # case 1: the node to be deleted has no children
+           
             parent = node.getParent()
             if parent is None:
-                # the node to be deleted is the root of the tree
+             
                 self.root = None
             elif parent.getLeft() == node:
                 parent.setLeft(None)
             else:
                 parent.setRight(None)
         elif node.getLeft() is None:
-            # case 2: the node to be deleted has only a right child
+            
             parent = node.getParent()
             rightChild = node.getRight()
             if parent is None:
-                # the node to be deleted is the root of the tree
+             
                 self.root = rightChild
                 rightChild.setParent(None)
             elif parent.getLeft() == node:
@@ -93,11 +92,11 @@ class BST:
                 parent.setRight(rightChild)
                 rightChild.setParent(parent)
         elif node.getRight() is None:
-            # case 2: the node to be deleted has only a left child
+          
             parent = node.getParent()
             leftChild = node.getLeft()
             if parent is None:
-                # the node to be deleted is the root of the tree
+                
                 self.root = leftChild
                 leftChild.setParent(None)
             elif parent.getLeft() == node:
@@ -107,7 +106,7 @@ class BST:
                 parent.setRight(leftChild)
                 leftChild.setParent(parent)
         else:
-            # case 3: the node to be deleted has two children
+          
             successor = node.getRight()
             while successor.getLeft() is not None:
                 successor = successor.getLeft()
@@ -119,7 +118,7 @@ class BST:
             else:
                 successor.getParent().setRight(successor.getRight())
    
-    # Search for the node with data val in the tree
+
     def search(self, val: int) -> Optional[TNode]:
         current = self.root
         while current is not None:
@@ -130,6 +129,42 @@ class BST:
             else:
                 current = current.getRight()
         return None
- 
+    
+    def printInOrder(self):
+        if self.root is None:
+            return
+
+        stack = []
+        node = self.root
+
+        while len(stack) > 0 or node is not None:
+            if node is not None:
+                stack.append(node)
+                node = node.getLeft()
+            else:
+                node = stack.pop()
+                print(node.getData(), end=" ")
+                node = node.getRight()
+
+   
+    def printBF(self):
+        if self.root is None:
+            return
+
+        queue = deque()
+        queue.append(self.root)
+
+        while len(queue) > 0:
+        
+            level_size = len(queue)
+            for i in range(level_size):
+                node = queue.popleft()
+                print(node.getData(), end=" ")
+                if node.getLeft() is not None:
+                    queue.append(node.getLeft())
+                if node.getRight() is not None:
+                    queue.append(node.getRight())
+        
+            print()
 
  
