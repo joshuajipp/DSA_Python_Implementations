@@ -10,7 +10,6 @@ def test_integration():
     stack.push(SNode(3))
     stack.push(SNode(4))
     stack.push(SNode(5))
-    stack.printList()
 
     assert stack.isEmpty() == False
     assert stack.size == 5

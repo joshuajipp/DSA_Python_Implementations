@@ -110,7 +110,6 @@ def test_sortedInsert():
     not_sorted_dll.insertTail(DNode(1))
     not_sorted_dll.insertTail(DNode(2))
     not_sorted_dll.sortedInsert(DNode(3))
-    not_sorted_dll.printList()
     assert not_sorted_dll.isSorted() == True
     assert not_sorted_dll.size == 6
     assert not_sorted_dll.head.val == 1
