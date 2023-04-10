@@ -94,3 +94,6 @@ class SinglyCircularLinkedList(SinglyLinkedList):
 
         """
         return super().search(search_target)
+
+    def isSorted(self) -> bool:
+        return super().isSorted()
