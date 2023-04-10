@@ -91,3 +91,24 @@ def test_deleteHead():
     assert singlyCLL.size == 4
     assert singlyCLL.tail.next.next.val == 3
     assert singlyCLL.tail.next.next.next.next.val == 5
+
+    singlyCLL.deleteHead()
+    assert singlyCLL.head.val == 3
+    assert singlyCLL.tail.val == 5
+    assert singlyCLL.tail.next.val == 3
+    assert singlyCLL.size == 3
+    assert singlyCLL.tail.next.next.val == 4
+    assert singlyCLL.tail.next.next.next.next.val == 3
+
+    singlyCLL.deleteHead()
+    singlyCLL.deleteHead()
+    assert singlyCLL.head.val == 5
+    assert singlyCLL.head.next.val == 5
+    assert singlyCLL.tail.val == 5
+    assert singlyCLL.tail.next.val == 5
+    assert singlyCLL.size == 1
+
+    singlyCLL.deleteHead()
+    assert singlyCLL.head is None
+    assert singlyCLL.tail is None
+    assert singlyCLL.size == 0

@@ -57,4 +57,13 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         Delete the head node of the linked list.
         """
         super().deleteHead()
-        self.tail.next = self.head
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
+
+    def deleteTail(self):
+        """
+        Delete the tail node of the linked list.
+        """
+        super().deleteTail()
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
