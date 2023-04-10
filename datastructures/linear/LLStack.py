@@ -3,43 +3,54 @@ from datastructures.nodes.SNode import SNode
 
 
 class LinkedListStack(SinglyLinkedList):
-    """
-    A linked list implementation of a stack data structure.
-    """
-
-    def __init__(self):
-        super().__init__()
-
-    def push(self, val):
+    def __init__(self, head: SNode = None):
         """
-        Add an element to the top of the stack.
+        Initialize the linked list with a head node (optional). Set tail to head and size to 0 or 1.
 
         Args:
-            val: The value to be added to the stack.
+            head (Node, optional): Head node of the linked list. Defaults to None.
         """
-        node = SNode(val)
+        super().__init__(head)
+
+    def push(self, node: SNode):
+        """
+        Insert a node at the head of the linked list.
+
+        Args:
+            node (Node): Node to be inserted at the head.
+        """
         self.insertHead(node)
 
-    def pop(self):
+    def pop(self) -> SNode:
         """
-        Remove and return the top element of the stack.
+        Remove the head node and return it.
 
         Returns:
-            The value of the top element of the stack.
+            Node: Head node of the linked list.
         """
-        if self.head is None:
-            return None
-        val = self.head.val
+        node = self.head
         self.deleteHead()
-        return val
+        return node.val
 
-    def peek(self):
+    def peek(self) -> int:
         """
-        Return the value of the top element of the stack without removing it.
+        Return the head node.
 
         Returns:
-            The value of the top element of the stack.
+            Node: Head node of the linked list.
         """
         if self.head is None:
             return None
         return self.head.val
+
+    def isEmpty(self) -> bool:
+        """
+        Check if the stack is empty.
+
+        Returns:
+            bool: True if the stack is empty, False otherwise.
+        """
+        return self.size == 0
+
+    def printList(self):
+        return super().printList()
