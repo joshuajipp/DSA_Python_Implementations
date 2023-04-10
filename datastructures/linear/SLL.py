@@ -232,7 +232,7 @@ class SinglyLinkedList:
 
         current_node = self.head
         i = 0
-        while current_node.next is not None and i < self.size:
+        while current_node.next is not None and i < self.size - 1:
             if current_node.val > current_node.next.val:
                 # If the current node's value is greater than the next node's value, the list is not sorted
                 return False

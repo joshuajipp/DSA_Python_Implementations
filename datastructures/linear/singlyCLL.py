@@ -96,4 +96,10 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         return super().search(search_target)
 
     def isSorted(self) -> bool:
+        """
+        Checks if the linked list is sorted in ascending order.
+
+        Returns:
+            bool: True if the linked list is sorted, False otherwise.
+        """
         return super().isSorted()

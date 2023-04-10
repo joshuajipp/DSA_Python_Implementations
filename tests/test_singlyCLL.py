@@ -213,3 +213,21 @@ def test_search():
     assert singlyCLL.search(300) == singlyCLL.head.next.next
     assert singlyCLL.search(400) == singlyCLL.head.next.next.next
     assert singlyCLL.search(500) == singlyCLL.tail
+
+
+def test_isSorted():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(0))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(6))
+    singlyCLL.insertTail(SNode(8))
+    assert singlyCLL.isSorted() == True
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(5))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(3))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(1))
+    assert singlyCLL.isSorted() == False
