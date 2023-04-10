@@ -38,7 +38,7 @@ class LinkedListQueue(SinglyLinkedList):
     def isEmpty(self):
         """
 
-                    Checks if the queue is empty.
+        Checks if the queue is empty.
 
         Returns:
             bool: True if the queue is empty, False otherwise.
