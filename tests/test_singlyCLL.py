@@ -150,3 +150,50 @@ def test_deleteTail():
     assert singlyCLL.head is None
     assert singlyCLL.tail is None
     assert singlyCLL.size == 0
+
+
+def test_delete():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(100))
+    singlyCLL.insertTail(SNode(200))
+    singlyCLL.insertTail(SNode(300))
+    singlyCLL.insertTail(SNode(400))
+    singlyCLL.insertTail(SNode(500))
+
+    singlyCLL.delete(50)
+    assert singlyCLL.head.val == 100
+    assert singlyCLL.tail.val == 500
+    assert singlyCLL.tail.next.val == 100
+    assert singlyCLL.size == 5
+
+    singlyCLL.delete(200)
+    assert singlyCLL.head.val == 100
+    assert singlyCLL.tail.val == 500
+    assert singlyCLL.tail.next.val == 100
+    assert singlyCLL.size == 4
+    assert singlyCLL.tail.next.next.val == 300
+
+    singlyCLL.delete(500)
+    assert singlyCLL.head.val == 100
+    assert singlyCLL.tail.val == 400
+    assert singlyCLL.tail.next.val == 100
+    assert singlyCLL.size == 3
+    assert singlyCLL.tail.next.next.val == 300
+
+    singlyCLL.delete(100)
+    assert singlyCLL.head.val == 300
+    assert singlyCLL.tail.val == 400
+    assert singlyCLL.tail.next.val == 300
+    assert singlyCLL.size == 2
+    assert singlyCLL.tail.next.next.val == 400
+
+    singlyCLL.delete(400)
+    assert singlyCLL.head.val == 300
+    assert singlyCLL.tail.val == 300
+    assert singlyCLL.tail.next.val == 300
+    assert singlyCLL.size == 1
+
+    singlyCLL.delete(300)
+    assert singlyCLL.head is None
+    assert singlyCLL.tail is None
+    assert singlyCLL.size == 0
