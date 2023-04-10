@@ -67,3 +67,17 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         super().deleteTail()
         if not (self.head is None or self.tail is None):
             self.tail.next = self.head
+
+    def delete(self, targetValue: int):
+        """
+        Deletes the node with the given target value from the linked list.
+
+        Args:
+            targetValue (int): The value of the node to be deleted.
+
+        Returns:
+            None: If the linked list is empty or the target node is not found.
+        """
+        super().delete(targetValue)
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head

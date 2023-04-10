@@ -175,9 +175,11 @@ class SinglyLinkedList:
             self.deleteHead()
             return
         current = self.head
-        while current.next is not None and current.next.val != targetValue:
+        i = 0
+        while current.next is not None and current.next.val != targetValue and i < self.size:
             current = current.next
-        if current.next is None:
+            i += 1
+        if current.next is None or i == self.size:
             return
         if current.next == self.tail:
             self.deleteTail()
