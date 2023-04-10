@@ -197,3 +197,19 @@ def test_delete():
     assert singlyCLL.head is None
     assert singlyCLL.tail is None
     assert singlyCLL.size == 0
+
+
+def test_search():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(100))
+    singlyCLL.insertTail(SNode(200))
+    singlyCLL.insertTail(SNode(300))
+    singlyCLL.insertTail(SNode(400))
+    singlyCLL.insertTail(SNode(500))
+
+    assert singlyCLL.search(50) == None
+    assert singlyCLL.search(100) == singlyCLL.tail.next
+    assert singlyCLL.search(200) == singlyCLL.head.next
+    assert singlyCLL.search(300) == singlyCLL.head.next.next
+    assert singlyCLL.search(400) == singlyCLL.head.next.next.next
+    assert singlyCLL.search(500) == singlyCLL.tail

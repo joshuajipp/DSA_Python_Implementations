@@ -81,3 +81,16 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         super().delete(targetValue)
         if not (self.head is None or self.tail is None):
             self.tail.next = self.head
+
+    def search(self, search_target: int):
+        """
+        Searches the linked list for a node with a specific value.
+
+        Args:
+            search_target (int): The value to be searched for in the linked list.
+
+        Returns:
+            Node: The node with the searched value or None if it is not found.
+
+        """
+        return super().search(search_target)
