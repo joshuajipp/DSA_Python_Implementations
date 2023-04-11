@@ -196,12 +196,13 @@ class SinglyLinkedList:
         """
         if self.head is None:
             return
-        if self.head == self.tail:
+        if self.size == 1:
             return
         sorted_head = self.head
         unsorted_head = self.head.next
         sorted_head.next = None
-        while unsorted_head is not None:
+        i = 1
+        while unsorted_head is not None and i < self.size:
             node = unsorted_head
             unsorted_head = unsorted_head.next
             if node.val < sorted_head.val:
@@ -209,14 +210,20 @@ class SinglyLinkedList:
                 sorted_head = node
             else:
                 current = sorted_head
-                while current.next is not None and current.next.val < node.val:
+                j = 1
+                while current.next is not None and current.next.val < node.val and j < self.size:
                     current = current.next
+                    j += 1
                 node.next = current.next
                 current.next = node
+            i += 1
         self.head = sorted_head
         current = self.head
-        while current.next is not None:
+        i = 1
+        while current.next is not None and i < self.size:
             current = current.next
+            i += 1
+
         self.tail = current
 
     def isSorted(self) -> bool:
