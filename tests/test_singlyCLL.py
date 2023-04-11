@@ -231,3 +231,89 @@ def test_isSorted():
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(1))
     assert singlyCLL.isSorted() == False
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(1))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(3))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(1))
+    assert singlyCLL.isSorted() == False
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(5))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(3))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(5))
+    assert singlyCLL.isSorted() == False
+
+
+def test_sort():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(5))
+    singlyCLL.insertTail(SNode(4))
+    singlyCLL.insertTail(SNode(3))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(1))
+    singlyCLL.sort()
+    assert singlyCLL.head.val == 1
+    assert singlyCLL.head.next.val == 2
+    assert singlyCLL.head.next.next.val == 3
+    assert singlyCLL.head.next.next.next.val == 4
+    assert singlyCLL.head.next.next.next.next.val == 5
+    assert singlyCLL.tail.val == 5
+    assert singlyCLL.tail.next.val == 1
+    assert singlyCLL.size == 5
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(5))
+    singlyCLL.insertTail(SNode(2))
+    singlyCLL.insertTail(SNode(8))
+    singlyCLL.insertTail(SNode(0))
+    singlyCLL.insertTail(SNode(15))
+    singlyCLL.sort()
+    assert singlyCLL.head.val == 0
+    assert singlyCLL.head.next.val == 2
+    assert singlyCLL.head.next.next.val == 5
+    assert singlyCLL.head.next.next.next.val == 8
+    assert singlyCLL.head.next.next.next.next.val == 15
+    assert singlyCLL.tail.val == 15
+    assert singlyCLL.tail.next.val == 0
+    assert singlyCLL.size == 5
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(100))
+    singlyCLL.insertTail(SNode(250))
+    singlyCLL.insertTail(SNode(150))
+    singlyCLL.insertTail(SNode(50))
+    singlyCLL.insertTail(SNode(200))
+    singlyCLL.insertTail(SNode(300))
+    singlyCLL.insertTail(SNode(250))
+    singlyCLL.sort()
+    assert singlyCLL.head.val == 50
+    assert singlyCLL.head.next.val == 100
+    assert singlyCLL.head.next.next.val == 150
+    assert singlyCLL.head.next.next.next.val == 200
+    assert singlyCLL.head.next.next.next.next.val == 250
+    assert singlyCLL.head.next.next.next.next.next.val == 250
+    assert singlyCLL.head.next.next.next.next.next.next.val == 300
+    assert singlyCLL.tail.val == 300
+    assert singlyCLL.tail.next.val == 50
+    assert singlyCLL.size == 7
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(100))
+    singlyCLL.insertTail(SNode(200))
+    singlyCLL.insertTail(SNode(300))
+    singlyCLL.insertTail(SNode(400))
+    singlyCLL.insertTail(SNode(500))
+    singlyCLL.sort()
+    assert singlyCLL.head.val == 100
+    assert singlyCLL.head.next.val == 200
+    assert singlyCLL.head.next.next.val == 300
+    assert singlyCLL.head.next.next.next.val == 400
+    assert singlyCLL.head.next.next.next.next.val == 500
+    assert singlyCLL.tail.val == 500
+    assert singlyCLL.tail.next.val == 100
+    assert singlyCLL.size == 5
