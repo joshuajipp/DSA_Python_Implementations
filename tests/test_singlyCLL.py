@@ -317,3 +317,83 @@ def test_sort():
     assert singlyCLL.tail.val == 500
     assert singlyCLL.tail.next.val == 100
     assert singlyCLL.size == 5
+
+
+def test_sortedInsert():
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.insertTail(SNode(40))
+    singlyCLL.insertTail(SNode(30))
+    singlyCLL.insertTail(SNode(50))
+    singlyCLL.insertTail(SNode(20))
+    singlyCLL.insertTail(SNode(10))
+    singlyCLL.sortedInsert(SNode(25))
+    assert singlyCLL.head.val == 10
+    assert singlyCLL.head.next.val == 20
+    assert singlyCLL.head.next.next.val == 25
+    assert singlyCLL.head.next.next.next.val == 30
+    assert singlyCLL.head.next.next.next.next.val == 40
+    assert singlyCLL.head.next.next.next.next.next.val == 50
+    assert singlyCLL.tail.val == 50
+    assert singlyCLL.tail.next.val == 10
+    assert singlyCLL.size == 6
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.sortedInsert(SNode(100))
+    singlyCLL.sortedInsert(SNode(200))
+    singlyCLL.sortedInsert(SNode(300))
+    singlyCLL.sortedInsert(SNode(400))
+    singlyCLL.sortedInsert(SNode(500))
+    assert singlyCLL.head.val == 100
+    assert singlyCLL.head.next.val == 200
+    assert singlyCLL.head.next.next.val == 300
+    assert singlyCLL.head.next.next.next.val == 400
+    assert singlyCLL.head.next.next.next.next.val == 500
+    assert singlyCLL.tail.val == 500
+    assert singlyCLL.tail.next.val == 100
+    assert singlyCLL.size == 5
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.sortedInsert(SNode(100))
+    singlyCLL.sortedInsert(SNode(200))
+    singlyCLL.sortedInsert(SNode(300))
+    singlyCLL.sortedInsert(SNode(400))
+    singlyCLL.sortedInsert(SNode(500))
+    singlyCLL.sortedInsert(SNode(50))
+    singlyCLL.sortedInsert(SNode(600))
+    singlyCLL.sortedInsert(SNode(350))
+    singlyCLL.sortedInsert(SNode(250))
+    singlyCLL.sortedInsert(SNode(150))
+    assert singlyCLL.head.val == 50
+    assert singlyCLL.head.next.val == 100
+    assert singlyCLL.head.next.next.val == 150
+    assert singlyCLL.head.next.next.next.val == 200
+    assert singlyCLL.head.next.next.next.next.val == 250
+    assert singlyCLL.head.next.next.next.next.next.val == 300
+    assert singlyCLL.head.next.next.next.next.next.next.val == 350
+    assert singlyCLL.head.next.next.next.next.next.next.next.val == 400
+    assert singlyCLL.head.next.next.next.next.next.next.next.next.val == 500
+    assert singlyCLL.head.next.next.next.next.next.next.next.next.next.val == 600
+    assert singlyCLL.tail.val == 600
+    assert singlyCLL.tail.next.val == 50
+    assert singlyCLL.size == 10
+
+    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL.sortedInsert(SNode(4000))
+    singlyCLL.sortedInsert(SNode(3000))
+    singlyCLL.sortedInsert(SNode(8000))
+    singlyCLL.sortedInsert(SNode(1000))
+    singlyCLL.sortedInsert(SNode(5000))
+    singlyCLL.sortedInsert(SNode(2000))
+    singlyCLL.sortedInsert(SNode(7000))
+    singlyCLL.sortedInsert(SNode(6000))
+    assert singlyCLL.head.val == 1000
+    assert singlyCLL.head.next.val == 2000
+    assert singlyCLL.head.next.next.val == 3000
+    assert singlyCLL.head.next.next.next.val == 4000
+    assert singlyCLL.head.next.next.next.next.val == 5000
+    assert singlyCLL.head.next.next.next.next.next.val == 6000
+    assert singlyCLL.head.next.next.next.next.next.next.val == 7000
+    assert singlyCLL.head.next.next.next.next.next.next.next.val == 8000
+    assert singlyCLL.tail.val == 8000
+    assert singlyCLL.tail.next.val == 1000
+    assert singlyCLL.size == 8
