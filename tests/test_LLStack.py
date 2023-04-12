@@ -119,3 +119,103 @@ def test_clear():
     stack.clear()
     assert stack.size == 0
     assert stack.isEmpty() == True
+
+
+def test_insertHead_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.insertHead(SNode(2))
+    assert stack.size == 1
+    assert stack.head.val == 1
+
+
+def test_insertTail_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.insertTail(SNode(2))
+    assert stack.size == 1
+    assert stack.tail.val == 1
+
+
+def test_deleteHead_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.deleteHead()
+    assert stack.size == 1
+    assert stack.head.val == 1
+
+
+def test_deleteTail_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.deleteTail()
+    assert stack.size == 1
+    assert stack.tail.val == 1
+
+
+def test_insert_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.insert(SNode(0), 0)
+    stack.insert(SNode(4), 4)
+    assert stack.size == 3
+    assert stack.head.val == 3
+    assert stack.tail.val == 1
+
+
+def test_sortedInsert_override():
+    stack = LinkedListStack()
+    stack.push(SNode(4))
+    stack.push(SNode(8))
+    stack.push(SNode(1))
+    stack.push(SNode(3))
+    stack.sortedInsert(SNode(2))
+    assert stack.size == 4
+    assert stack.head.val == 3
+    assert stack.tail.val == 4
+
+
+def test_isSorted_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.push(SNode(4))
+    stack.push(SNode(5))
+    assert stack.isSorted() == None
+
+
+def test_sort_override():
+    stack = LinkedListStack()
+    stack.push(SNode(4))
+    stack.push(SNode(8))
+    stack.push(SNode(1))
+    stack.push(SNode(3))
+    stack.sort()
+    assert stack.head.val == 3
+    assert stack.tail.val == 4
+
+
+def test_search_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.push(SNode(4))
+    stack.push(SNode(5))
+    assert stack.search(1) == None
+    assert stack.search(2) == None
+    assert stack.search(10) == None
+
+
+def test_delete_override():
+    stack = LinkedListStack()
+    stack.push(SNode(1))
+    stack.push(SNode(2))
+    stack.push(SNode(3))
+    stack.delete(1)
+    assert stack.size == 3
+    assert stack.head.val == 3
+    assert stack.tail.val == 1
