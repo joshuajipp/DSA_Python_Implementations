@@ -110,3 +110,7 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         """
         super().sort()
         self.tail.next = self.head
+
+    def sortedInsert(self, node: SNode):
+        super().sortedInsert(node)
+        self.tail.next = self.head
