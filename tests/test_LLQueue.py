@@ -101,3 +101,16 @@ def test_contains():
     assert queue.contains(8) == False
     assert queue.contains(9) == False
     assert queue.contains(10) == False
+
+
+def test_clear():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(1))
+    queue.enqueue(SNode(2))
+    queue.enqueue(SNode(3))
+    queue.enqueue(SNode(4))
+    queue.enqueue(SNode(5))
+    assert queue.size == 5
+    queue.clear()
+    assert queue.size == 0
+    assert queue.isEmpty() == True
