@@ -112,5 +112,11 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         self.tail.next = self.head
 
     def sortedInsert(self, node: SNode):
+        """
+        Inserts a node into the linked list in ascending order.
+
+        Args:
+            node (Node): Node to be inserted.
+        """
         super().sortedInsert(node)
         self.tail.next = self.head
