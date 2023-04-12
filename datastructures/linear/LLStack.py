@@ -19,7 +19,7 @@ class LinkedListStack(SinglyLinkedList):
         Args:
             node (Node): Node to be inserted at the head.
         """
-        self.insertHead(node)
+        super().insertHead(node)
 
     def pop(self) -> SNode:
         """
@@ -29,7 +29,7 @@ class LinkedListStack(SinglyLinkedList):
             Node: Head node of the linked list.
         """
         node = self.head
-        self.deleteHead()
+        super().deleteHead()
         return node.val
 
     def peek(self) -> int:
@@ -67,7 +67,7 @@ class LinkedListStack(SinglyLinkedList):
     def printList(self):
         super().printList()
 
-    def clear():
+    def clear(self):
         super().clear()
 
     def insertHead(self, node: SNode):
