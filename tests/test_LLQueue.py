@@ -114,3 +114,94 @@ def test_clear():
     queue.clear()
     assert queue.size == 0
     assert queue.isEmpty() == True
+
+
+def test_insertHead_override():
+    queue = LinkedListQueue()
+    assert queue.insertHead(SNode(1)) is None
+    assert queue.size == 0
+    assert queue.isEmpty() == True
+
+
+def test_deleteHead_override():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(1))
+    assert queue.deleteHead() is None
+    assert queue.size == 1
+    assert queue.isEmpty() == False
+
+
+def test_deleteTail_override():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(1))
+    assert queue.deleteTail() is None
+    assert queue.size == 1
+    assert queue.isEmpty() == False
+
+
+def test_insertTail_override():
+    queue = LinkedListQueue()
+    assert queue.insertTail(SNode(1)) is None
+    assert queue.size == 0
+    assert queue.isEmpty() == True
+
+
+def test_insert_override():
+    queue = LinkedListQueue()
+    assert queue.insert(SNode(1), 0) is None
+    assert queue.size == 0
+    assert queue.isEmpty() == True
+
+
+def test_sortedInsert_override():
+    queue = LinkedListQueue()
+    assert queue.sortedInsert(SNode(1)) is None
+    assert queue.size == 0
+    assert queue.isEmpty() == True
+
+
+def test_isSorted_override():
+    queue = LinkedListQueue()
+    assert queue.isSorted() == None
+
+
+def test_sort_override():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(5))
+    queue.enqueue(SNode(8))
+    queue.enqueue(SNode(3))
+    queue.enqueue(SNode(1))
+
+    assert queue.sort() == None
+    assert queue.peek() == 5
+
+
+def test_search_override():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(5))
+    queue.enqueue(SNode(8))
+    queue.enqueue(SNode(3))
+    queue.enqueue(SNode(1))
+
+    assert queue.search(5) == None
+    assert queue.search(8) == None
+    assert queue.search(3) == None
+    assert queue.search(1) == None
+    assert queue.search(0) == None
+    assert queue.search(4) == None
+    assert queue.search(6) == None
+    assert queue.search(7) == None
+    assert queue.search(9) == None
+    assert queue.search(10) == None
+
+
+def test_delete_override():
+    queue = LinkedListQueue()
+    queue.enqueue(SNode(5))
+    queue.enqueue(SNode(8))
+    queue.enqueue(SNode(3))
+    queue.enqueue(SNode(1))
+
+    queue.delete(5)
+    assert queue.size == 4
+    assert queue.peek() == 5

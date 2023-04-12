@@ -87,7 +87,7 @@ class LinkedListQueue(SinglyLinkedList):
     def deleteTail(self):
         pass
 
-    def insert(self, node: SNode):
+    def insert(self, node: SNode, position: int):
         pass
 
     def sortedInsert(self, node: SNode):
