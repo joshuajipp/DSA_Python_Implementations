@@ -70,10 +70,10 @@ class LinkedListQueue(SinglyLinkedList):
         return super().search(targetValue) is not None
 
     def clear(self):
-        return super().clear()
+        super().clear()
 
     def printList(self):
-        return super().printList()
+        super().printList()
 
     def insertHead(self, node: SNode):
         pass
