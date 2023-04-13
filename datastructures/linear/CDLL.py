@@ -68,3 +68,6 @@ class CircularDoublyLinkedList(DoublyLinkedList):
 
     def clear(self):
         super().clear()
+
+    def printList(self):
+        super().printList()

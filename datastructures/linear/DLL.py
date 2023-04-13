@@ -272,10 +272,11 @@ class DoublyLinkedList:
             print("Sorted: No")
 
         current = self.head
-
-        while current is not None:
-            if current.next is None:
+        i = 0
+        while current is not None and i < self.size:
+            if current.next is None or current.next == self.head:
                 print(current.val)
             else:
                 print(current.val, end=" <-> ")
             current = current.next
+            i += 1
