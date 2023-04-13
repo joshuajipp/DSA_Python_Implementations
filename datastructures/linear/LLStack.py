@@ -52,7 +52,7 @@ class LinkedListStack(SinglyLinkedList):
         """
         return self.size == 0
 
-    def contains(self, targetValue: int) -> bool:
+    def contains(self, targetValue) -> bool:
         """
         Check if the linked list contains a node with the given target value.
 
@@ -94,8 +94,8 @@ class LinkedListStack(SinglyLinkedList):
     def sort(self):
         pass
 
-    def search(self, search_target: int):
+    def search(self, search_target):
         pass
 
-    def delete(self, targetValue: int):
+    def delete(self, targetValue):
         pass

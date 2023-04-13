@@ -57,7 +57,7 @@ class LinkedListQueue(SinglyLinkedList):
 
         return None
 
-    def contains(self, targetValue: int) -> bool:
+    def contains(self, targetValue) -> bool:
         """
         Checks if the queue contains a node with the given value.
 
@@ -99,8 +99,8 @@ class LinkedListQueue(SinglyLinkedList):
     def sort(self):
         pass
 
-    def search(self, search_target: int):
+    def search(self, search_target):
         pass
 
-    def delete(self, targetValue: int):
+    def delete(self, targetValue):
         pass

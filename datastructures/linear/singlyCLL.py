@@ -68,7 +68,7 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         if not (self.head is None or self.tail is None):
             self.tail.next = self.head
 
-    def delete(self, targetValue: int):
+    def delete(self, targetValue):
         """
         Deletes the node with the given target value from the linked list.
 
@@ -82,7 +82,7 @@ class SinglyCircularLinkedList(SinglyLinkedList):
         if not (self.head is None or self.tail is None):
             self.tail.next = self.head
 
-    def search(self, search_target: int):
+    def search(self, search_target):
         """
         Searches the linked list for a node with a specific value.
 

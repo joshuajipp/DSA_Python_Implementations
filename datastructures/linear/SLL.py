@@ -100,7 +100,7 @@ class SinglyLinkedList:
                 self.tail = node
             self.size += 1
 
-    def search(self, search_target: int):
+    def search(self, search_target) -> SNode:
         """
         Searches the linked list for a node with a specific value.
 
@@ -158,7 +158,7 @@ class SinglyLinkedList:
             self.tail = current
         self.size -= 1
 
-    def delete(self, targetValue: int):
+    def delete(self, targetValue):
         """
         Deletes the node with the given target value from the linked list.
 
