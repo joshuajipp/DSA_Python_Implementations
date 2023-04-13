@@ -160,7 +160,7 @@ class DoublyLinkedList:
             return  # List is empty
 
         if self.head.val == target:
-            if self.head.next is None:  # Only one node in the list
+            if self.size == 1:  # Only one node in the list
                 self.head = None
                 self.tail = None
             else:
@@ -170,7 +170,8 @@ class DoublyLinkedList:
             return
 
         current_node = self.head.next
-        while current_node is not None:
+        i = 1
+        while current_node is not None and i < self.size:
             if current_node.val == target:
                 if current_node == self.tail:
                     self.tail = self.tail.prev
@@ -181,6 +182,7 @@ class DoublyLinkedList:
                 self.size -= 1
                 return
             current_node = current_node.next
+            i += 1
 
     def search(self, val):
         """

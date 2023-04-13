@@ -161,3 +161,68 @@ def test_deleteTail():
     assert cdll.head is None
     assert cdll.tail is None
     assert cdll.size == 0
+
+
+def test_delete():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+
+    cdll.delete(40)
+    assert cdll.head.val == 10
+    assert cdll.head.next.val == 20
+    assert cdll.head.next.next.val == 30
+    assert cdll.head.next.next.next.val == 50
+    assert cdll.head.next.next.next.next.val == 10
+    assert cdll.head.prev.val == 50
+    assert cdll.head.prev.prev.val == 30
+    assert cdll.head.prev.prev.prev.val == 20
+    assert cdll.tail.next.val == 10
+    assert cdll.tail.val == 50
+    assert cdll.size == 4
+
+    cdll.delete(10)
+    assert cdll.head.val == 20
+    assert cdll.head.next.val == 30
+    assert cdll.head.next.next.val == 50
+    assert cdll.head.next.next.next.val == 20
+    assert cdll.head.prev.val == 50
+    assert cdll.head.prev.prev.val == 30
+    assert cdll.head.prev.prev.prev.val == 20
+    assert cdll.tail.next.val == 20
+    assert cdll.tail.val == 50
+    assert cdll.size == 3
+
+    cdll.delete(50)
+    assert cdll.head.val == 20
+    assert cdll.head.next.val == 30
+    assert cdll.head.next.next.val == 20
+    assert cdll.head.prev.val == 30
+    assert cdll.head.prev.prev.val == 20
+    assert cdll.tail.next.val == 20
+    assert cdll.tail.val == 30
+    assert cdll.size == 2
+
+    cdll.delete(20)
+    assert cdll.head.val == 30
+    assert cdll.head.next.val == 30
+    assert cdll.head.prev.val == 30
+    assert cdll.tail.next.val == 30
+    assert cdll.tail.val == 30
+    assert cdll.size == 1
+
+    cdll.delete(15)
+    assert cdll.head.val == 30
+    assert cdll.head.next.val == 30
+    assert cdll.head.prev.val == 30
+    assert cdll.tail.next.val == 30
+    assert cdll.tail.val == 30
+    assert cdll.size == 1
+
+    cdll.delete(30)
+    assert cdll.head is None
+    assert cdll.tail is None
+    assert cdll.size == 0
