@@ -57,3 +57,8 @@ class CircularDoublyLinkedList(DoublyLinkedList):
 
     def isSorted(self) -> bool:
         return super().isSorted()
+
+    def sortedInsert(self, node: DNode):
+        super().sortedInsert(node)
+        self.tail.next = self.head
+        self.head.prev = self.tail

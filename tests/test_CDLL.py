@@ -345,3 +345,85 @@ def test_isSorted():
     cdll.insertHead(DNode(50))
 
     assert cdll.isSorted() == False
+
+
+def test_sortedInsert():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+
+    cdll.sortedInsert(DNode(25))
+    assert cdll.head.val == 10
+    assert cdll.head.next.val == 20
+    assert cdll.head.next.next.val == 25
+    assert cdll.head.next.next.next.val == 30
+    assert cdll.head.next.next.next.next.val == 40
+    assert cdll.head.next.next.next.next.next.val == 50
+    assert cdll.head.prev.val == 50
+    assert cdll.head.prev.prev.val == 40
+    assert cdll.head.prev.prev.prev.val == 30
+    assert cdll.head.prev.prev.prev.prev.val == 25
+    assert cdll.head.prev.prev.prev.prev.prev.val == 20
+    assert cdll.tail.next.val == 10
+    assert cdll.tail.val == 50
+    assert cdll.size == 6
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+    cdll.insertHead(DNode(60))
+    cdll.insertHead(DNode(70))
+    cdll.insertHead(DNode(80))
+    cdll.insertHead(DNode(90))
+    cdll.insertHead(DNode(100))
+
+    cdll.sortedInsert(DNode(25))
+    assert cdll.head.val == 10
+    assert cdll.head.next.val == 20
+    assert cdll.head.next.next.val == 25
+    assert cdll.head.next.next.next.val == 30
+    assert cdll.head.next.next.next.next.val == 40
+    assert cdll.head.next.next.next.next.next.val == 50
+    assert cdll.head.next.next.next.next.next.next.val == 60
+    assert cdll.head.next.next.next.next.next.next.next.val == 70
+    assert cdll.head.next.next.next.next.next.next.next.next.val == 80
+    assert cdll.tail.val == 100
+    assert cdll.tail.prev.val == 90
+    assert cdll.tail.prev.prev.val == 80
+    assert cdll.tail.prev.prev.prev.val == 70
+    assert cdll.tail.prev.prev.prev.prev.val == 60
+    assert cdll.tail.prev.prev.prev.prev.prev.val == 50
+    assert cdll.tail.prev.prev.prev.prev.prev.prev.val == 40
+    assert cdll.tail.prev.prev.prev.prev.prev.prev.prev.val == 30
+    assert cdll.tail.prev.prev.prev.prev.prev.prev.prev.prev.val == 25
+    assert cdll.tail.prev.prev.prev.prev.prev.prev.prev.prev.prev.val == 20
+    assert cdll.head.prev.val == 100
+    assert cdll.size == 11
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(10))
+    cdll.insertHead(DNode(500))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(25))
+
+    cdll.sortedInsert(DNode(501))
+    assert cdll.head.val == 10
+    assert cdll.head.next.val == 25
+    assert cdll.head.next.next.val == 30
+    assert cdll.head.next.next.next.val == 40
+    assert cdll.head.next.next.next.next.val == 500
+    assert cdll.head.next.next.next.next.next.val == 501
+    assert cdll.head.prev.val == 501
+    assert cdll.head.prev.prev.val == 500
+    assert cdll.tail.val == 501
+    assert cdll.tail.next.val == 10
+    assert cdll.tail.prev.prev.val == 40
+    assert cdll.head.prev.val == 501
+    assert cdll.size == 6

@@ -78,15 +78,18 @@ class DoublyLinkedList:
             self.head = node
         else:
             current_node = self.head
-            while current_node.next is not None and current_node.next.val < node.val:
+            i = 1
+            while current_node.next is not None and current_node.next.val < node.val and i < self.size:
                 current_node = current_node.next
+                i += 1
             node.next = current_node.next
             node.prev = current_node
             current_node.next = node
-            if node.next is not None:
+            if node.next is not None and node.next != self.head:
                 node.next.prev = node
             else:
                 self.tail = node
+
         self.size += 1
 
     def sort(self):
