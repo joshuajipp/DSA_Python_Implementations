@@ -2,7 +2,7 @@ from datastructures.linear.SLL import SinglyLinkedList
 from datastructures.nodes.SNode import SNode
 
 
-class SinglyCircularLinkedList(SinglyLinkedList):
+class CircularSinglyLinkedList(SinglyLinkedList):
     """
     A singly circular linked list implementation that inherits from SinglyLinkedList.
     """

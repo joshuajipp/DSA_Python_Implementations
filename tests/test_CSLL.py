@@ -1,9 +1,9 @@
-from datastructures.linear.CSLL import SinglyCircularLinkedList
+from datastructures.linear.CSLL import CircularSinglyLinkedList
 from datastructures.nodes.SNode import SNode
 
 
 def test_insertHead():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertHead(SNode(1))
     singlyCLL.insertHead(SNode(2))
     singlyCLL.insertHead(SNode(3))
@@ -17,7 +17,7 @@ def test_insertHead():
 
 
 def test_insertTail():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(10))
     singlyCLL.insertTail(SNode(11))
     singlyCLL.insertTail(SNode(12))
@@ -33,7 +33,7 @@ def test_insertTail():
 
 
 def test_insert():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insert(SNode(2), 0)
     singlyCLL.insert(SNode(1), 0)
     singlyCLL.insert(SNode(5), 2)
@@ -77,7 +77,7 @@ def test_insert():
 
 
 def test_deleteHead():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(1))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(3))
@@ -115,7 +115,7 @@ def test_deleteHead():
 
 
 def test_deleteTail():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(1))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(3))
@@ -153,7 +153,7 @@ def test_deleteTail():
 
 
 def test_delete():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(100))
     singlyCLL.insertTail(SNode(200))
     singlyCLL.insertTail(SNode(300))
@@ -200,7 +200,7 @@ def test_delete():
 
 
 def test_search():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(100))
     singlyCLL.insertTail(SNode(200))
     singlyCLL.insertTail(SNode(300))
@@ -216,7 +216,7 @@ def test_search():
 
 
 def test_isSorted():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(0))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(4))
@@ -224,7 +224,7 @@ def test_isSorted():
     singlyCLL.insertTail(SNode(8))
     assert singlyCLL.isSorted() == True
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(5))
     singlyCLL.insertTail(SNode(4))
     singlyCLL.insertTail(SNode(3))
@@ -232,7 +232,7 @@ def test_isSorted():
     singlyCLL.insertTail(SNode(1))
     assert singlyCLL.isSorted() == False
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(1))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(3))
@@ -240,7 +240,7 @@ def test_isSorted():
     singlyCLL.insertTail(SNode(1))
     assert singlyCLL.isSorted() == False
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(5))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(3))
@@ -250,7 +250,7 @@ def test_isSorted():
 
 
 def test_sort():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(5))
     singlyCLL.insertTail(SNode(4))
     singlyCLL.insertTail(SNode(3))
@@ -266,7 +266,7 @@ def test_sort():
     assert singlyCLL.tail.next.val == 1
     assert singlyCLL.size == 5
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(5))
     singlyCLL.insertTail(SNode(2))
     singlyCLL.insertTail(SNode(8))
@@ -282,7 +282,7 @@ def test_sort():
     assert singlyCLL.tail.next.val == 0
     assert singlyCLL.size == 5
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(100))
     singlyCLL.insertTail(SNode(250))
     singlyCLL.insertTail(SNode(150))
@@ -302,7 +302,7 @@ def test_sort():
     assert singlyCLL.tail.next.val == 50
     assert singlyCLL.size == 7
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(100))
     singlyCLL.insertTail(SNode(200))
     singlyCLL.insertTail(SNode(300))
@@ -320,7 +320,7 @@ def test_sort():
 
 
 def test_sortedInsert():
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.insertTail(SNode(40))
     singlyCLL.insertTail(SNode(30))
     singlyCLL.insertTail(SNode(50))
@@ -337,7 +337,7 @@ def test_sortedInsert():
     assert singlyCLL.tail.next.val == 10
     assert singlyCLL.size == 6
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.sortedInsert(SNode(100))
     singlyCLL.sortedInsert(SNode(200))
     singlyCLL.sortedInsert(SNode(300))
@@ -352,7 +352,7 @@ def test_sortedInsert():
     assert singlyCLL.tail.next.val == 100
     assert singlyCLL.size == 5
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.sortedInsert(SNode(100))
     singlyCLL.sortedInsert(SNode(200))
     singlyCLL.sortedInsert(SNode(300))
@@ -377,7 +377,7 @@ def test_sortedInsert():
     assert singlyCLL.tail.next.val == 50
     assert singlyCLL.size == 10
 
-    singlyCLL = SinglyCircularLinkedList()
+    singlyCLL = CircularSinglyLinkedList()
     singlyCLL.sortedInsert(SNode(4000))
     singlyCLL.sortedInsert(SNode(3000))
     singlyCLL.sortedInsert(SNode(8000))
