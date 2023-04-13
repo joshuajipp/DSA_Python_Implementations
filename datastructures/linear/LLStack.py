@@ -32,7 +32,7 @@ class LinkedListStack(SinglyLinkedList):
         super().deleteHead()
         return node.val
 
-    def peek(self) -> int:
+    def peek(self):
         """
         Return the head node.
 
