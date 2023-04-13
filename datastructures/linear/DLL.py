@@ -145,16 +145,18 @@ class DoublyLinkedList:
         Returns:
             bool: True if the linked list is sorted in ascending order, False otherwise.
         """
-        if self.head is None or self.head.next is None:
+        if self.size <= 1:
             # An empty or single-element list is always sorted
             return True
 
         current_node = self.head
-        while current_node.next is not None:
+        i = 1
+        while current_node.next is not None and i < self.size:
             if current_node.val > current_node.next.val:
                 # If the current node's value is greater than the next node's value, the list is not sorted
                 return False
             current_node = current_node.next
+            i += 1
 
         # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
         return True

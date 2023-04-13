@@ -302,3 +302,46 @@ def test_sort():
     assert cdll.tail.next.val == 10
     assert cdll.tail.val == 50
     assert cdll.size == 5
+
+
+def test_isSorted():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+
+    assert cdll.isSorted() == True
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+    cdll.insertHead(DNode(60))
+    cdll.insertHead(DNode(70))
+    cdll.insertHead(DNode(80))
+    cdll.insertHead(DNode(90))
+    cdll.insertHead(DNode(100))
+
+    assert cdll.isSorted() == False
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(10))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(50))
+
+    assert cdll.isSorted() == False
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(10))
+    cdll.insertHead(DNode(500))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(50))
+
+    assert cdll.isSorted() == False
