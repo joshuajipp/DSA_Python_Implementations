@@ -20,3 +20,13 @@ class CircularDoublyLinkedList(DoublyLinkedList):
         super().insertHead(node)
         self.tail.next = self.head
         self.head.prev = self.tail
+
+    def insertTail(self, node: DNode):
+        super().insertTail(node)
+        self.tail.next = self.head
+        self.head.prev = self.tail
+
+    def insert(self, node: DNode, position: int):
+        super().insert(node, position)
+        self.tail.next = self.head
+        self.head.prev = self.tail
