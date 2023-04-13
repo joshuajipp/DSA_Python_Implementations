@@ -30,3 +30,21 @@ class CircularDoublyLinkedList(DoublyLinkedList):
         super().insert(node, position)
         self.tail.next = self.head
         self.head.prev = self.tail
+
+    def deleteHead(self):
+        super().deleteHead()
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
+            self.head.prev = self.tail
+
+    def deleteTail(self):
+        super().deleteTail()
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
+            self.head.prev = self.tail
+
+    def delete(self, targetValue):
+        super().delete(targetValue)
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
+            self.head.prev = self.tail
