@@ -457,3 +457,29 @@ def test_search():
     assert cdll.search(30) == cdll.tail.prev.prev
     assert cdll.search(40) == cdll.tail.prev.prev.prev
     assert cdll.search(50) == cdll.head
+
+
+def test_clear():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+
+    cdll.clear()
+    assert cdll.head == None
+    assert cdll.tail == None
+    assert cdll.size == 0
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(25))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(50))
+
+    cdll.clear()
+    assert cdll.head == None
+    assert cdll.tail == None
+    assert cdll.size == 0

@@ -65,3 +65,6 @@ class CircularDoublyLinkedList(DoublyLinkedList):
 
     def search(self, targetValue) -> DNode:
         return super().search(targetValue)
+
+    def clear(self):
+        super().clear()
