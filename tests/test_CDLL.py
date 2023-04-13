@@ -73,3 +73,38 @@ def test_insert():
     except IndexError:
         exception_raised = True
     assert exception_raised
+
+
+def test_deleteHead():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(3))
+    cdll.insertHead(DNode(2))
+    cdll.insertHead(DNode(1))
+    cdll.insertHead(DNode(0))
+    cdll.deleteHead()
+    assert cdll.head.val == 1
+    assert cdll.head.next.val == 2
+    assert cdll.head.next.next.val == 3
+    assert cdll.head.next.next.next.val == 1
+    assert cdll.head.prev.val == 3
+    assert cdll.head.prev.prev.val == 2
+    assert cdll.head.prev.prev.prev.val == 1
+    assert cdll.tail.next.val == 1
+    assert cdll.tail.val == 3
+    assert cdll.size == 3
+
+    cdll.deleteHead()
+    assert cdll.head.val == 2
+    assert cdll.head.next.val == 3
+    assert cdll.head.next.next.val == 2
+    assert cdll.head.prev.val == 3
+    assert cdll.head.prev.prev.val == 2
+    assert cdll.tail.next.val == 2
+    assert cdll.tail.val == 3
+    assert cdll.size == 2
+
+    cdll.deleteHead()
+    cdll.deleteHead()
+    assert cdll.head is None
+    assert cdll.tail is None
+    assert cdll.size == 0

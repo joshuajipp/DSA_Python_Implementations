@@ -208,7 +208,7 @@ class DoublyLinkedList:
         """
         if self.head is None:
             return
-        if self.head.next is None:
+        if self.head.next is None or self.size == 1:
             self.head = None
             self.tail = None
             self.size = 0
