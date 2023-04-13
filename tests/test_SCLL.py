@@ -1,4 +1,4 @@
-from datastructures.linear.singlyCLL import SinglyCircularLinkedList
+from datastructures.linear.CSLL import SinglyCircularLinkedList
 from datastructures.nodes.SNode import SNode
 
 

@@ -1,4 +1,4 @@
-from datastructures.linear.LLQueue import LinkedListQueue
+from datastructures.linear.QueueLL import LinkedListQueue
 from datastructures.nodes.SNode import SNode
 
 

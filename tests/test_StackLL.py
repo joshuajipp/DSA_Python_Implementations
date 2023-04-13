@@ -1,5 +1,4 @@
-from datastructures.linear.SLL import SinglyLinkedList
-from datastructures.linear.LLStack import LinkedListStack
+from datastructures.linear.StackLL import LinkedListStack
 from datastructures.nodes.SNode import SNode
 
 
