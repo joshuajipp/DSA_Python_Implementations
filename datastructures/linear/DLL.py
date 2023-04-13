@@ -154,7 +154,7 @@ class DoublyLinkedList:
         # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
         return True
 
-    def deleteNode(self, target: int):
+    def delete(self, target):
         """Removes the first node containing the target value."""
         if self.head is None:
             return  # List is empty
