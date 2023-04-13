@@ -205,10 +205,12 @@ class DoublyLinkedList:
             The node with the given value if found, None otherwise.
         """
         current_node = self.head
-        while current_node is not None:
+        i = 0
+        while current_node is not None and i < self.size:
             if current_node.val == val:
                 return current_node
             current_node = current_node.next
+            i += 1
         return None
 
     def deleteHead(self):

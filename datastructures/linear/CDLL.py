@@ -62,3 +62,6 @@ class CircularDoublyLinkedList(DoublyLinkedList):
         super().sortedInsert(node)
         self.tail.next = self.head
         self.head.prev = self.tail
+
+    def search(self, targetValue) -> DNode:
+        return super().search(targetValue)

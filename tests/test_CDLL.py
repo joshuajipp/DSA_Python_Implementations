@@ -427,3 +427,33 @@ def test_sortedInsert():
     assert cdll.tail.prev.prev.val == 40
     assert cdll.head.prev.val == 501
     assert cdll.size == 6
+
+
+def test_search():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(50))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(10))
+
+    assert cdll.search(10) == cdll.head
+    assert cdll.search(20) == cdll.head.next
+    assert cdll.search(30) == cdll.head.next.next
+    assert cdll.search(40) == cdll.head.next.next.next
+    assert cdll.search(50) == cdll.tail
+    assert cdll.search(60) == None
+
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(20))
+    cdll.insertHead(DNode(25))
+    cdll.insertHead(DNode(30))
+    cdll.insertHead(DNode(40))
+    cdll.insertHead(DNode(50))
+
+    assert cdll.search(10) == None
+    assert cdll.search(20) == cdll.tail
+    assert cdll.search(25) == cdll.tail.prev
+    assert cdll.search(30) == cdll.tail.prev.prev
+    assert cdll.search(40) == cdll.tail.prev.prev.prev
+    assert cdll.search(50) == cdll.head
