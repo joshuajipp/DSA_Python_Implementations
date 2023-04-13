@@ -96,7 +96,7 @@ class DoublyLinkedList:
         Returns:
             None: If the linked list is empty or contains only one node.
         """
-        if self.head is None or self.head.next is None:
+        if self.size <= 1:
             # An empty or single-element list is already sorted
             return
 
@@ -104,8 +104,8 @@ class DoublyLinkedList:
         unsorted_head = self.head.next
         sorted_head.prev = None
         sorted_head.next = None
-
-        while unsorted_head is not None:
+        i = 1
+        while unsorted_head is not None and i < self.size:
             node = unsorted_head
             unsorted_head = unsorted_head.next
             node.prev = None
@@ -117,20 +117,25 @@ class DoublyLinkedList:
                 sorted_head = node
             else:
                 current = sorted_head
-                while current.next is not None and current.next.val < node.val:
+                j = 1
+                while current.next is not None and current.next.val < node.val and j < self.size:
                     current = current.next
+                    j += 1
                 node.next = current.next
                 node.prev = current
                 current.next = node
-                if node.next is not None:
+                if node.next is not None and node.next != self.head:
                     node.next.prev = node
                 else:
                     self.tail = node
+            i += 1
 
         self.head = sorted_head
         current = self.head
-        while current.next is not None:
+        i = 1
+        while current.next is not None and i < self.size:
             current = current.next
+            i += 1
         self.tail = current
 
     def isSorted(self) -> bool:

@@ -48,3 +48,9 @@ class CircularDoublyLinkedList(DoublyLinkedList):
         if not (self.head is None or self.tail is None):
             self.tail.next = self.head
             self.head.prev = self.tail
+
+    def sort(self):
+        super().sort()
+        if not (self.head is None or self.tail is None):
+            self.tail.next = self.head
+            self.head.prev = self.tail
