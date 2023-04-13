@@ -104,7 +104,60 @@ def test_deleteHead():
     assert cdll.size == 2
 
     cdll.deleteHead()
+    assert cdll.head.val == 3
+    assert cdll.head.next.val == 3
+    assert cdll.head.prev.val == 3
+    assert cdll.tail.next.val == 3
+    assert cdll.tail.val == 3
+    assert cdll.size == 1
+
     cdll.deleteHead()
+    assert cdll.head is None
+    assert cdll.tail is None
+    assert cdll.size == 0
+
+
+def test_deleteTail():
+    cdll = CircularDoublyLinkedList()
+    cdll.insertHead(DNode(1))
+    cdll.insertHead(DNode(3))
+    cdll.insertHead(DNode(5))
+    cdll.insertHead(DNode(7))
+    cdll.insertHead(DNode(9))
+
+    cdll.deleteTail()
+    assert cdll.head.val == 9
+    assert cdll.head.next.val == 7
+    assert cdll.head.next.next.val == 5
+    assert cdll.head.next.next.next.val == 3
+    assert cdll.head.next.next.next.next.val == 9
+    assert cdll.head.prev.val == 3
+    assert cdll.head.prev.prev.val == 5
+    assert cdll.head.prev.prev.prev.val == 7
+    assert cdll.tail.next.val == 9
+    assert cdll.tail.val == 3
+    assert cdll.size == 4
+
+    cdll.deleteTail()
+    cdll.deleteTail()
+    assert cdll.head.val == 9
+    assert cdll.head.next.val == 7
+    assert cdll.head.next.next.val == 9
+    assert cdll.head.prev.val == 7
+    assert cdll.head.prev.prev.val == 9
+    assert cdll.tail.next.val == 9
+    assert cdll.tail.val == 7
+    assert cdll.size == 2
+
+    cdll.deleteTail()
+    assert cdll.head.val == 9
+    assert cdll.head.next.val == 9
+    assert cdll.head.prev.val == 9
+    assert cdll.tail.next.val == 9
+    assert cdll.tail.val == 9
+    assert cdll.size == 1
+
+    cdll.deleteTail()
     assert cdll.head is None
     assert cdll.tail is None
     assert cdll.size == 0

@@ -225,7 +225,7 @@ class DoublyLinkedList:
             The value of the tail node that was removed.
         """
         if self.size == 0:
-            raise Exception("Cannot delete from empty list.")
+            return
         elif self.size == 1:
             val = self.head.val
             self.head = None
