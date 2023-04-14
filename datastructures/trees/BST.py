@@ -1,10 +1,9 @@
 from collections import deque
-from typing import Optional
 from datastructures.nodes.TNode import TNode
 
 class BST:
 
-    def __init__(self, val: Optional[int] = None, obj: Optional[TNode] = None):
+    def __init__(self, val: int = None, obj: TNode = None):
         if obj is not None:
             self.root = obj
         elif val is not None:
@@ -16,7 +15,7 @@ class BST:
     def setRoot(self, node: TNode):
         self.root = node
 
-    def getRoot(self) -> Optional[TNode]:
+    def getRoot(self) -> TNode:
         return self.root
     
 
@@ -119,7 +118,7 @@ class BST:
                 successor.getParent().setRight(successor.getRight())
    
 
-    def search(self, val: int) -> Optional[TNode]:
+    def search(self, val: int) -> TNode:
         current = self.root
         while current is not None:
             if val == current.getData():
