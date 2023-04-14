@@ -78,15 +78,18 @@ class DoublyLinkedList:
             self.head = node
         else:
             current_node = self.head
-            while current_node.next is not None and current_node.next.val < node.val:
+            i = 1
+            while current_node.next is not None and current_node.next.val < node.val and i < self.size:
                 current_node = current_node.next
+                i += 1
             node.next = current_node.next
             node.prev = current_node
             current_node.next = node
-            if node.next is not None:
+            if node.next is not None and node.next != self.head:
                 node.next.prev = node
             else:
                 self.tail = node
+
         self.size += 1
 
     def sort(self):
@@ -96,7 +99,7 @@ class DoublyLinkedList:
         Returns:
             None: If the linked list is empty or contains only one node.
         """
-        if self.head is None or self.head.next is None:
+        if self.size <= 1:
             # An empty or single-element list is already sorted
             return
 
@@ -104,8 +107,8 @@ class DoublyLinkedList:
         unsorted_head = self.head.next
         sorted_head.prev = None
         sorted_head.next = None
-
-        while unsorted_head is not None:
+        i = 1
+        while unsorted_head is not None and i < self.size:
             node = unsorted_head
             unsorted_head = unsorted_head.next
             node.prev = None
@@ -117,20 +120,25 @@ class DoublyLinkedList:
                 sorted_head = node
             else:
                 current = sorted_head
-                while current.next is not None and current.next.val < node.val:
+                j = 1
+                while current.next is not None and current.next.val < node.val and j < self.size:
                     current = current.next
+                    j += 1
                 node.next = current.next
                 node.prev = current
                 current.next = node
-                if node.next is not None:
+                if node.next is not None and node.next != self.head:
                     node.next.prev = node
                 else:
                     self.tail = node
+            i += 1
 
         self.head = sorted_head
         current = self.head
-        while current.next is not None:
+        i = 1
+        while current.next is not None and i < self.size:
             current = current.next
+            i += 1
         self.tail = current
 
     def isSorted(self) -> bool:
@@ -140,27 +148,29 @@ class DoublyLinkedList:
         Returns:
             bool: True if the linked list is sorted in ascending order, False otherwise.
         """
-        if self.head is None or self.head.next is None:
+        if self.size <= 1:
             # An empty or single-element list is always sorted
             return True
 
         current_node = self.head
-        while current_node.next is not None:
+        i = 1
+        while current_node.next is not None and i < self.size:
             if current_node.val > current_node.next.val:
                 # If the current node's value is greater than the next node's value, the list is not sorted
                 return False
             current_node = current_node.next
+            i += 1
 
         # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
         return True
 
-    def deleteNode(self, target: int):
+    def delete(self, target):
         """Removes the first node containing the target value."""
         if self.head is None:
             return  # List is empty
 
         if self.head.val == target:
-            if self.head.next is None:  # Only one node in the list
+            if self.size == 1:  # Only one node in the list
                 self.head = None
                 self.tail = None
             else:
@@ -170,7 +180,8 @@ class DoublyLinkedList:
             return
 
         current_node = self.head.next
-        while current_node is not None:
+        i = 1
+        while current_node is not None and i < self.size:
             if current_node.val == target:
                 if current_node == self.tail:
                     self.tail = self.tail.prev
@@ -181,6 +192,7 @@ class DoublyLinkedList:
                 self.size -= 1
                 return
             current_node = current_node.next
+            i += 1
 
     def search(self, val):
         """
@@ -193,10 +205,12 @@ class DoublyLinkedList:
             The node with the given value if found, None otherwise.
         """
         current_node = self.head
-        while current_node is not None:
+        i = 0
+        while current_node is not None and i < self.size:
             if current_node.val == val:
                 return current_node
             current_node = current_node.next
+            i += 1
         return None
 
     def deleteHead(self):
@@ -208,7 +222,7 @@ class DoublyLinkedList:
         """
         if self.head is None:
             return
-        if self.head.next is None:
+        if self.head.next is None or self.size == 1:
             self.head = None
             self.tail = None
             self.size = 0
@@ -225,7 +239,7 @@ class DoublyLinkedList:
             The value of the tail node that was removed.
         """
         if self.size == 0:
-            raise Exception("Cannot delete from empty list.")
+            return
         elif self.size == 1:
             val = self.head.val
             self.head = None
@@ -258,10 +272,11 @@ class DoublyLinkedList:
             print("Sorted: No")
 
         current = self.head
-
-        while current is not None:
-            if current.next is None:
+        i = 0
+        while current is not None and i < self.size:
+            if current.next is None or current.next == self.head:
                 print(current.val)
             else:
                 print(current.val, end=" <-> ")
             current = current.next
+            i += 1

@@ -153,38 +153,38 @@ def test_deleteTail():
     assert sll.size == 0
 
 
-def test_deleteNode():
+def test_delete():
     sll = SinglyLinkedList()
     sll.insertTail(SNode(1))
     sll.insertTail(SNode(2))
     sll.insertTail(SNode(3))
     sll.insertTail(SNode(4))
     sll.insertTail(SNode(5))
-    sll.deleteNode(1)
-    sll.deleteNode(5)
+    sll.delete(1)
+    sll.delete(5)
     assert sll.head.val == 2
     assert sll.tail.val == 4
     assert sll.size == 3
-    sll.deleteNode(3)
+    sll.delete(3)
     assert sll.head.val == 2
     assert sll.tail.val == 4
     assert sll.size == 2
 
     sll.insertHead(SNode(1))
     sll.insertTail(SNode(5))
-    sll.deleteNode(sll.tail.val)
+    sll.delete(sll.tail.val)
     assert sll.head.val == 1
     assert sll.tail.val == 4
     assert sll.size == 3
-    sll.deleteNode(sll.head.val)
+    sll.delete(sll.head.val)
     assert sll.head.val == 2
     assert sll.tail.val == 4
     assert sll.size == 2
-    sll.deleteNode(2)
+    sll.delete(2)
     assert sll.head.val == 4
     assert sll.tail.val == 4
     assert sll.size == 1
-    sll.deleteNode(sll.head.val)
+    sll.delete(sll.head.val)
     assert sll.head == None
     assert sll.tail == None
     assert sll.size == 0

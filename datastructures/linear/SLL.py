@@ -47,7 +47,7 @@ class SinglyLinkedList:
             self.tail = node
         self.size += 1
 
-    def insert(self, node: SNode, position):
+    def insert(self, node: SNode, position: int):
         """
         Insert a node at a given position in the linked list.
 
@@ -87,21 +87,20 @@ class SinglyLinkedList:
         if not self.isSorted():
             self.sort()
         if self.head is None or node.val < self.head.val:
-            node.next = self.head
-            self.head = node
-            if node.next is None:
-                self.tail = node
+            self.insertHead(node)
         else:
             current_node = self.head
-            while current_node.next is not None and current_node.next.val < node.val:
+            i = 0
+            while current_node.next is not None and current_node.next.val < node.val and i < self.size - 1:
                 current_node = current_node.next
+                i += 1
             node.next = current_node.next
             current_node.next = node
-            if node.next is None:
+            if node.next is None or node.next == self.head:
                 self.tail = node
-        self.size += 1
+            self.size += 1
 
-    def search(self, search_target: int):
+    def search(self, search_target) -> SNode:
         """
         Searches the linked list for a node with a specific value.
 
@@ -112,11 +111,13 @@ class SinglyLinkedList:
             Node: The node with the searched value or None if it is not found.
 
         """
+        i = 0
         current = self.head
-        while current is not None:
+        while current is not None and i < self.size:
             if current.val == search_target:
                 return current
             current = current.next
+            i += 1
         return None
 
     def deleteHead(self):
@@ -157,7 +158,7 @@ class SinglyLinkedList:
             self.tail = current
         self.size -= 1
 
-    def deleteNode(self, targetValue: int):
+    def delete(self, targetValue):
         """
         Deletes the node with the given target value from the linked list.
 
@@ -173,9 +174,11 @@ class SinglyLinkedList:
             self.deleteHead()
             return
         current = self.head
-        while current.next is not None and current.next.val != targetValue:
+        i = 0
+        while current.next is not None and current.next.val != targetValue and i < self.size:
             current = current.next
-        if current.next is None:
+            i += 1
+        if current.next is None or i == self.size:
             return
         if current.next == self.tail:
             self.deleteTail()
@@ -192,12 +195,13 @@ class SinglyLinkedList:
         """
         if self.head is None:
             return
-        if self.head == self.tail:
+        if self.size == 1:
             return
         sorted_head = self.head
         unsorted_head = self.head.next
         sorted_head.next = None
-        while unsorted_head is not None:
+        i = 1
+        while unsorted_head is not None and i < self.size:
             node = unsorted_head
             unsorted_head = unsorted_head.next
             if node.val < sorted_head.val:
@@ -205,14 +209,20 @@ class SinglyLinkedList:
                 sorted_head = node
             else:
                 current = sorted_head
-                while current.next is not None and current.next.val < node.val:
+                j = 1
+                while current.next is not None and current.next.val < node.val and j < self.size:
                     current = current.next
+                    j += 1
                 node.next = current.next
                 current.next = node
+            i += 1
         self.head = sorted_head
         current = self.head
-        while current.next is not None:
+        i = 1
+        while current.next is not None and i < self.size:
             current = current.next
+            i += 1
+
         self.tail = current
 
     def isSorted(self) -> bool:
@@ -222,16 +232,18 @@ class SinglyLinkedList:
         Returns:
             bool: True if the linked list is sorted in ascending order, False otherwise.
         """
-        if self.head is None or self.head.next is None:
+        if self.size <= 1:
             # An empty or single-element list is always sorted
             return True
 
         current_node = self.head
-        while current_node.next is not None:
+        i = 0
+        while current_node.next is not None and i < self.size - 1:
             if current_node.val > current_node.next.val:
                 # If the current node's value is greater than the next node's value, the list is not sorted
                 return False
             current_node = current_node.next
+            i += 1
 
         # If we have reached the end of the list without finding any out-of-order nodes, the list is sorted
         return True
@@ -257,10 +269,11 @@ class SinglyLinkedList:
             print("Sorted: No")
 
         current = self.head
-
-        while current is not None:
-            if current.next is None:
+        i = 0
+        while current is not None and i < self.size:
+            if current.next is None or current.next == self.head:
                 print(current.val)
             else:
                 print(current.val, end=" -> ")
             current = current.next
+            i += 1
