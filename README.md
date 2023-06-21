@@ -7,9 +7,9 @@ Implementations of common data structures along with in-depth unit testing of ea
 * Circular Doubly Linked List
 * Circular Singly Linked List
 * Doubly Linked List
-* Queue Linked List
+* Linked List Queue
 * Singly Linked List
-* Stack Linked List
+* Linked List Stack
 
 ## Run tests
 ```
